@@ -12,7 +12,7 @@ function cx(...parts: Array<string | false | null | undefined>) {
 }
 
 function surfaceCard() {
-  return "rounded-2xl border border-border/50 bg-card shadow-sm";
+  return "rounded-[24px] border border-border bg-card backdrop-blur-3xl shadow-sm";
 }
 
 function surfaceCardHover() {
@@ -25,21 +25,20 @@ function focusRing() {
 
 export default function Page() {
   return (
-    <div className="min-h-dvh bg-page text-primary transition-colors duration-300">
-      <div aria-hidden="true" className="pointer-events-none fixed inset-0 -z-10">
+    <div className="min-h-dvh flex flex-col text-primary transition-colors duration-300">
+      <div aria-hidden="true" className="pointer-events-none fixed inset-0 -z-10 overflow-hidden">
+        {/* Apple-style colorful ambient orbs for glassmorphism bleeding */}
         <div
-          className="absolute left-1/2 top-[-220px] h-[520px] w-[520px] -translate-x-1/2 rounded-full blur-3xl opacity-60"
-          style={{
-            background:
-              "radial-gradient(circle at center, rgba(0,212,255,0.25), transparent 62%)",
-          }}
+          className="absolute left-[10%] top-[-10%] h-[600px] w-[600px] rounded-full blur-[120px] opacity-50 mix-blend-multiply dark:mix-blend-screen transition-opacity duration-1000"
+          style={{ background: "radial-gradient(circle, rgba(0,113,227,0.4), transparent 70%)" }}
         />
         <div
-          className="absolute bottom-[-240px] left-1/2 h-[560px] w-[560px] -translate-x-1/2 rounded-full blur-3xl opacity-50"
-          style={{
-            background:
-              "radial-gradient(circle at center, rgba(0,212,255,0.18), transparent 60%)",
-          }}
+          className="absolute right-[-5%] top-[20%] h-[700px] w-[700px] rounded-full blur-[140px] opacity-40 mix-blend-multiply dark:mix-blend-screen transition-opacity duration-1000"
+          style={{ background: "radial-gradient(circle, rgba(162,50,200,0.3), transparent 60%)" }}
+        />
+        <div
+          className="absolute bottom-[-10%] left-[30%] h-[600px] w-[600px] rounded-full blur-[120px] opacity-40 mix-blend-multiply dark:mix-blend-screen transition-opacity duration-1000"
+          style={{ background: "radial-gradient(circle, rgba(52,199,89,0.25), transparent 70%)" }}
         />
       </div>
 
@@ -143,9 +142,9 @@ export default function Page() {
                   className={cx(surfaceCard(), "p-6", surfaceCardHover(), focusRing())}
                 >
                   {project.image ? (
-                    <img src={project.image} alt={project.title} className="aspect-[16/10] w-full rounded-xl object-cover bg-gray-800" />
+                    <img src={project.image} alt={project.title} className="aspect-[16/10] w-full rounded-[20px] object-cover bg-gray-800" />
                   ) : (
-                    <div className="aspect-[16/10] w-full rounded-xl bg-gray-800" />
+                    <div className="aspect-[16/10] w-full rounded-[20px] bg-gray-800" />
                   )}
                   <div className="mt-6 flex items-start justify-between gap-4">
                     <div className="min-w-0">
@@ -230,9 +229,9 @@ export default function Page() {
                   className={cx(surfaceCard(), "p-6", surfaceCardHover(), focusRing())}
                 >
                   {x.image ? (
-                    <img src={x.image} alt={x.title} className="aspect-[16/9] w-full rounded-xl object-cover bg-gray-800" />
+                    <img src={x.image} alt={x.title} className="aspect-[16/9] w-full rounded-[20px] object-cover bg-gray-800" />
                   ) : (
-                    <div className="aspect-[16/9] w-full rounded-xl bg-gray-800" />
+                    <div className="aspect-[16/9] w-full rounded-[20px] bg-gray-800" />
                   )}
                   <h3 className="mt-6 text-lg font-semibold tracking-tight text-primary">
                     {x.title}

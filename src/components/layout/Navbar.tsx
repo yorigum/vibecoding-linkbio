@@ -61,7 +61,7 @@ export function Navbar({
       className={cx(
         "sticky top-0 z-50 w-full transition-all duration-300",
         isScrolled
-          ? "border-b border-border/50 bg-page/80 backdrop-blur-md shadow-sm"
+          ? "border-b border-border bg-page/70 backdrop-blur-2xl backdrop-saturate-150"
           : "bg-transparent",
         className
       )}
@@ -125,7 +125,7 @@ export function Navbar({
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -10 }}
             transition={{ duration: 0.2 }}
-            className="absolute top-full left-0 w-full border-b border-border/50 bg-page/95 backdrop-blur-xl shadow-lg md:hidden"
+            className="absolute top-full left-0 w-full border-b border-border bg-page/80 backdrop-blur-3xl backdrop-saturate-200 shadow-lg md:hidden"
           >
             <div className="flex flex-col px-6 py-6 space-y-5">
               {links.map((l) => (
