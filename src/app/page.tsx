@@ -1,288 +1,475 @@
-"use client";
+const ACCENT = "#00D4FF";
 
-import { useEffect, type ReactNode } from "react";
-
-type LinkItem = {
-  title: string;
-  url: string;
-  subtitle: string;
-  icon: ReactNode;
-  clicksLabel: string;
-};
-
-function Icon({ children }: { children: ReactNode }) {
-  return (
-    <span
-      aria-hidden="true"
-      className="grid h-10 w-10 place-items-center rounded-xl bg-white/5 ring-1 ring-white/10 transition group-hover:ring-white/20"
-    >
-      {children}
-    </span>
-  );
+function cx(...parts: Array<string | false | null | undefined>) {
+  return parts.filter(Boolean).join(" ");
 }
 
-function iconProps() {
-  return {
-    width: 20,
-    height: 20,
-    viewBox: "0 0 24 24",
-    fill: "none",
-    xmlns: "http://www.w3.org/2000/svg",
-    className: "text-white/90",
-    stroke: "currentColor",
-    strokeWidth: 2,
-    strokeLinecap: "round" as const,
-    strokeLinejoin: "round" as const,
-  };
+function focusRing() {
+  return "focus:outline-none focus-visible:ring-2 focus-visible:ring-[#00D4FF]/60 focus-visible:ring-offset-2 focus-visible:ring-offset-[#0a0a0a]";
 }
 
-const LINKS: LinkItem[] = [
-  {
-    title: "Portfolio",
-    url: "https://example.com",
-    subtitle: "See my work",
-    clicksLabel: "🔥 100+ clicks",
-    icon: (
-      <Icon>
-        <svg {...iconProps()}>
-          <path d="M3 7h18" />
-          <path d="M8 7V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2" />
-          <path d="M6 7v14a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V7" />
-          <path d="M10 12h4" />
-          <path d="M10 16h4" />
-        </svg>
-      </Icon>
-    ),
-  },
-  {
-    title: "GitHub",
-    url: "https://github.com/yourname",
-    subtitle: "@yourname",
-    clicksLabel: "🔥 100+ clicks",
-    icon: (
-      <Icon>
-        <svg {...iconProps()}>
-          <path d="M9 19c-4 1.5-4-2.5-5-3" />
-          <path d="M14 22v-3.2a2.8 2.8 0 0 0-.8-2.2c2.7-.3 5.6-1.3 5.6-6A4.7 4.7 0 0 0 17.6 7a4.4 4.4 0 0 0-.1-3S16.5 3.7 14 5.4a9.4 9.4 0 0 0-5 0C6.5 3.7 5.5 4 5.5 4s-.5 1.3-.1 3A4.7 4.7 0 0 0 4.2 10.6c0 4.7 2.9 5.7 5.6 6a2.8 2.8 0 0 0-.8 2.2V22" />
-        </svg>
-      </Icon>
-    ),
-  },
-  {
-    title: "Twitter",
-    url: "https://twitter.com/yourname",
-    subtitle: "@yourname",
-    clicksLabel: "🔥 100+ clicks",
-    icon: (
-      <Icon>
-        <svg {...iconProps()}>
-          <path d="M22 5.9c-.7.3-1.5.6-2.3.7a4 4 0 0 0 1.7-2.2 7.7 7.7 0 0 1-2.5 1A3.9 3.9 0 0 0 12 8a11 11 0 0 1-8-4 3.9 3.9 0 0 0 1.2 5.2c-.6 0-1.2-.2-1.7-.5v.1A3.9 3.9 0 0 0 6.6 13c-.6.2-1.2.2-1.8.1a3.9 3.9 0 0 0 3.6 2.7A7.8 7.8 0 0 1 2 17.4 11 11 0 0 0 8.3 19c7.2 0 11.1-6.1 11.1-11.3v-.5c.8-.6 1.5-1.3 2-2.1Z" />
-        </svg>
-      </Icon>
-    ),
-  },
-  {
-    title: "YouTube",
-    url: "https://youtube.com/@yourname",
-    subtitle: "Watch my videos",
-    clicksLabel: "🔥 100+ clicks",
-    icon: (
-      <Icon>
-        <svg {...iconProps()}>
-          <path d="M10 15l5-3-5-3v6Z" />
-          <rect x="3" y="7" width="18" height="10" rx="2" />
-        </svg>
-      </Icon>
-    ),
-  },
-  {
-    title: "Email",
-    url: "mailto:you@example.com",
-    subtitle: "you@example.com",
-    clicksLabel: "🔥 100+ clicks",
-    icon: (
-      <Icon>
-        <svg {...iconProps()}>
-          <path d="M4 6h16v12H4z" />
-          <path d="m4 7 8 6 8-6" />
-        </svg>
-      </Icon>
-    ),
-  },
-];
+function surfaceCard() {
+  return "rounded-2xl border border-white/10 bg-[#111] shadow-[0_0_0_1px_rgba(255,255,255,0.02)]";
+}
+
+function surfaceCardHover() {
+  return "transition hover:-translate-y-0.5 hover:border-white/20 hover:shadow-[0_0_0_1px_rgba(0,212,255,0.18)]";
+}
 
 export default function Page() {
-  useEffect(() => {
-    const items = Array.from(
-      document.querySelectorAll<HTMLElement>("[data-stagger]")
-    );
-
-    if (window.matchMedia?.("(prefers-reduced-motion: reduce)").matches) {
-      for (const el of items) {
-        el.style.opacity = "1";
-        el.style.transform = "none";
-      }
-      return;
-    }
-
-    for (const el of items) {
-      const d = Number(el.dataset.stagger ?? "0");
-      el.animate(
-        [
-          { opacity: 0, transform: "translateY(10px)" },
-          { opacity: 1, transform: "translateY(0px)" },
-        ],
-        {
-          duration: 720,
-          delay: d * 90,
-          easing: "cubic-bezier(0.16, 1, 0.3, 1)",
-          fill: "forwards",
-        }
-      );
-    }
-  }, []);
-
   return (
-    <main className="min-h-dvh text-white antialiased">
-      {/* Subtle gradient background */}
-      <div
-        aria-hidden="true"
-        className="fixed inset-0 -z-10 bg-[#0a0a0a]"
-        style={{
-          background:
-            "linear-gradient(180deg, rgba(10,10,10,1) 0%, rgba(10,10,10,1) 35%, rgba(7,7,7,1) 100%)",
-        }}
-      />
+    <div className="min-h-dvh bg-[#0a0a0a] text-white">
       <div aria-hidden="true" className="pointer-events-none fixed inset-0 -z-10">
         <div
-          className="absolute left-1/2 top-[-140px] h-[420px] w-[420px] -translate-x-1/2 rounded-full blur-3xl"
+          className="absolute left-1/2 top-[-220px] h-[520px] w-[520px] -translate-x-1/2 rounded-full blur-3xl opacity-60"
           style={{
-            background:
-              "radial-gradient(circle at center, rgba(229,9,20,0.16), rgba(229,9,20,0) 62%)",
+            background: `radial-gradient(circle at center, ${ACCENT}40, transparent 62%)`,
           }}
         />
         <div
-          className="absolute bottom-[-170px] left-1/2 h-[460px] w-[460px] -translate-x-1/2 rounded-full blur-3xl"
+          className="absolute bottom-[-240px] left-1/2 h-[560px] w-[560px] -translate-x-1/2 rounded-full blur-3xl opacity-50"
           style={{
-            background:
-              "radial-gradient(circle at center, rgba(229,9,20,0.10), rgba(229,9,20,0) 62%)",
-          }}
-        />
-        <div
-          className="absolute inset-0 opacity-[0.25]"
-          style={{
-            background:
-              "radial-gradient(900px 500px at 20% 10%, rgba(255,255,255,0.06), rgba(255,255,255,0) 60%), radial-gradient(800px 520px at 80% 35%, rgba(255,255,255,0.04), rgba(255,255,255,0) 55%)",
+            background: `radial-gradient(circle at center, ${ACCENT}2E, transparent 60%)`,
           }}
         />
       </div>
 
-      <div className="relative mx-auto w-full max-w-[480px] px-6 pb-10 pt-10">
-        {/* Profile */}
-        <section
-          data-stagger="0"
-          style={{ opacity: 0, transform: "translateY(10px)" }}
-          className="mb-8 flex flex-col items-center text-center"
-        >
-          <div className="relative mb-4">
-            <div className="h-24 w-24 rounded-full bg-white/10 ring-1 ring-white/15" />
-            <div
-              aria-hidden="true"
-              className="absolute -inset-2 rounded-full opacity-60 blur-xl"
-              style={{
-                background:
-                  "radial-gradient(circle at center, rgba(229,9,20,0.30), rgba(229,9,20,0) 65%)",
-              }}
-            />
+      {/* Navbar */}
+      <nav className="sticky top-0 z-20 border-b border-white/10 bg-[#0a0a0a]/80 backdrop-blur">
+        <div className="mx-auto flex max-w-6xl items-center justify-between px-4 py-4 sm:px-6">
+          <a
+            href="#"
+            className={cx(
+              "font-semibold tracking-tight text-white/90 hover:text-white",
+              "transition",
+              focusRing()
+            )}
+          >
+            Yohanes <span className="text-white/40">/</span>{" "}
+            <span className="text-white/80">Yoriworks</span>
+          </a>
+
+          <div className="hidden items-center gap-6 sm:flex">
+            {[
+              { href: "#portfolio", label: "Portfolio" },
+              { href: "#studio", label: "Studio" },
+              { href: "#services", label: "Services" },
+            ].map((l) => (
+              <a
+                key={l.href}
+                href={l.href}
+                className={cx(
+                  "text-sm text-white/70 hover:text-white",
+                  "transition",
+                  focusRing()
+                )}
+              >
+                {l.label}
+              </a>
+            ))}
           </div>
 
-          <h1 className="text-2xl font-semibold tracking-tight">Your Name</h1>
-          <p className="mt-2 max-w-[32ch] text-sm leading-relaxed text-white/70">
-            Vibe Coder ✨ | Building cool stuff with AI
-          </p>
+          <a
+            href="#cta"
+            className={cx(
+              "inline-flex items-center justify-center rounded-md px-4 py-2 text-sm font-semibold",
+              "bg-gradient-to-r from-[#00D4FF] to-[#2EE6FF] text-[#001018]",
+              "shadow-[0_10px_30px_rgba(0,212,255,0.10)]",
+              "transition hover:brightness-110 active:brightness-95",
+              focusRing()
+            )}
+          >
+            Hire Me
+          </a>
+        </div>
+      </nav>
 
-          <div className="mt-5 h-px w-24 bg-gradient-to-r from-transparent via-white/20 to-transparent" />
+      <main>
+        {/* Hero */}
+        <section className="py-16 sm:py-24">
+          <div className="mx-auto grid max-w-6xl items-center gap-12 px-4 sm:px-6 md:grid-cols-2">
+            <div>
+              <p className="text-sm font-semibold tracking-wide text-[#00D4FF]/90">
+                Mobile Dev • Music Producer
+              </p>
+              <h1 className="mt-4 text-4xl font-bold leading-tight tracking-tight sm:text-6xl">
+                Code that Scales, <span className="text-[#00D4FF]">Sound</span>{" "}
+                that Resonates
+              </h1>
+              <p className="mt-6 max-w-prose text-base leading-relaxed text-white/70 sm:text-lg">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Android
+                Developer specializing in Kotlin &amp; Jetpack Compose with a
+                passion for Music Production.
+              </p>
+
+              <div className="mt-10 flex flex-wrap gap-3">
+                <a
+                  href="#portfolio"
+                  className={cx(
+                    "inline-flex items-center justify-center rounded-md px-5 py-2.5 text-sm font-semibold",
+                    "bg-[#00D4FF] text-[#001018]",
+                    "transition hover:brightness-110 active:brightness-95",
+                    focusRing()
+                  )}
+                >
+                  View Projects
+                </a>
+                <a
+                  href="#studio"
+                  className={cx(
+                    "inline-flex items-center justify-center rounded-md px-5 py-2.5 text-sm font-semibold",
+                    "border border-white/15 bg-white/5 text-white/90",
+                    "transition hover:border-white/25 hover:bg-white/10 active:bg-white/5",
+                    focusRing()
+                  )}
+                >
+                  Listen to Tracks
+                </a>
+              </div>
+            </div>
+
+            <div className={cx("relative p-4", surfaceCard())}>
+              <div className="aspect-[4/3] w-full rounded-xl bg-gray-800" />
+              <p className="sr-only">Hero image placeholder</p>
+              <div
+                aria-hidden="true"
+                className="pointer-events-none absolute -inset-6 -z-10 rounded-3xl opacity-40 blur-2xl"
+                style={{
+                  background:
+                    "radial-gradient(closest-side, rgba(0,212,255,0.25), rgba(0,212,255,0) 70%)",
+                }}
+              />
+            </div>
+          </div>
         </section>
 
-        {/* Links */}
-        <section className="space-y-3">
-          {LINKS.map((item, idx) => (
-            <a
-              key={item.title}
-              data-stagger={idx + 1}
-              style={{ opacity: 0, transform: "translateY(10px)" }}
-              href={item.url}
-              target={item.url.startsWith("http") ? "_blank" : undefined}
-              rel={item.url.startsWith("http") ? "noreferrer" : undefined}
-              className={[
-                "group block rounded-2xl bg-white/[0.04] p-4 ring-1 ring-white/10 backdrop-blur",
-                "transition-transform duration-200 ease-out will-change-transform",
-                "hover:scale-[1.02] hover:-translate-y-0.5 hover:bg-white/[0.06] hover:ring-white/20",
-                "active:scale-[0.99] active:translate-y-[1px]",
-                "focus:outline-none focus-visible:ring-2 focus-visible:ring-[#E50914]",
-              ].join(" ")}
-            >
-              <div className="relative">
-                {/* Hover glow */}
-                <span
-                  aria-hidden="true"
-                  className="pointer-events-none absolute -inset-2 rounded-3xl opacity-0 blur-xl transition-opacity duration-200 group-hover:opacity-100"
-                  style={{
-                    background:
-                      "radial-gradient(circle at center, rgba(229,9,20,0.22), rgba(229,9,20,0) 70%)",
-                  }}
-                />
-                <div className="relative flex items-center gap-4">
-                  {item.icon}
+        {/* Features */}
+        <section id="services" className="py-16 sm:py-24">
+          <div className="mx-auto max-w-6xl px-4 sm:px-6">
+            <header className="max-w-2xl">
+              <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">
+                Services built for speed &amp; taste
+              </h2>
+              <p className="mt-4 text-base text-white/65">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+              </p>
+            </header>
 
-                  <div className="min-w-0 flex-1">
-                    <div className="flex items-center justify-between gap-3">
-                      <p className="truncate text-base font-medium">
-                        {item.title}
-                      </p>
-                      <span
-                        aria-hidden="true"
-                        className="shrink-0 text-white/40 transition group-hover:text-white/70"
-                      >
-                        <svg {...iconProps()} width="18" height="18">
-                          <path d="M7 17 17 7" />
-                          <path d="M10 7h7v7" />
-                        </svg>
-                      </span>
+            <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+              {[
+                {
+                  title: "Mobile Mastery",
+                  body: "Lorem ipsum dolor sit amet. Building high-performance Android apps.",
+                },
+                {
+                  title: "Audio Craft",
+                  body: "Lorem ipsum dolor sit amet. Professional music production & sample packs.",
+                },
+                {
+                  title: "Creative Synergy",
+                  body: "Lorem ipsum dolor sit amet. Solving problems with logic and art.",
+                },
+              ].map((c) => (
+                <article
+                  key={c.title}
+                  className={cx(surfaceCard(), "p-7", surfaceCardHover())}
+                >
+                  <div className="flex items-center gap-4">
+                    <div className="h-12 w-12 rounded-xl bg-gray-800" />
+                    <h3 className="text-lg font-semibold tracking-tight">
+                      {c.title}
+                    </h3>
+                  </div>
+                  <p className="mt-5 text-sm leading-relaxed text-white/60">
+                    {c.body}
+                  </p>
+                </article>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* How it works */}
+        <section className="py-16 sm:py-24">
+          <div className="mx-auto max-w-6xl px-4 sm:px-6">
+            <header className="max-w-2xl">
+              <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">
+                How it works
+              </h2>
+              <p className="mt-4 text-base text-white/65">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+              </p>
+            </header>
+
+            <ol className="mt-12 grid gap-6 md:grid-cols-3">
+              {[
+                {
+                  title: "Ideation",
+                  body: "Lorem ipsum dolor sit amet. Analyzing user needs or musical vibes.",
+                },
+                {
+                  title: "Development",
+                  body: "Lorem ipsum dolor sit amet. Coding with Jetpack Compose or arranging in DAW.",
+                },
+                {
+                  title: "Delivery",
+                  body: "Lorem ipsum dolor sit amet. Deploying to Play Store or final audio mastering.",
+                },
+              ].map((s, idx) => (
+                <li
+                  key={s.title}
+                  className={cx(surfaceCard(), "p-7", surfaceCardHover())}
+                >
+                  <div className="flex items-start gap-4">
+                    <div className="grid h-11 w-11 place-items-center rounded-xl bg-[#00D4FF]/15 text-sm font-bold text-[#00D4FF] ring-1 ring-[#00D4FF]/25">
+                      {idx + 1}
                     </div>
-
-                    <p className="mt-1 truncate text-sm text-white/60">
-                      {item.subtitle} •{" "}
-                      <span className="text-white/45">{item.url}</span>
-                    </p>
-
-                    {/* Analytics badge */}
-                    <div className="mt-3">
-                      <span className="inline-flex items-center gap-2 rounded-full bg-white/5 px-2.5 py-1 text-xs text-white/65 ring-1 ring-white/10">
-                        <span
-                          aria-hidden="true"
-                          className="h-1.5 w-1.5 rounded-full"
-                          style={{ backgroundColor: "#E50914" }}
-                        />
-                        {item.clicksLabel}
-                      </span>
+                    <div>
+                      <h3 className="text-lg font-semibold tracking-tight">
+                        {s.title}
+                      </h3>
+                      <p className="mt-4 text-sm leading-relaxed text-white/60">
+                        {s.body}
+                      </p>
                     </div>
                   </div>
-                </div>
-              </div>
-            </a>
-          ))}
+                </li>
+              ))}
+            </ol>
+          </div>
         </section>
 
-        {/* Footer */}
-        <footer
-          data-stagger={LINKS.length + 2}
-          style={{ opacity: 0, transform: "translateY(10px)" }}
-          className="mt-10 text-center text-xs text-white/50"
-        >
-          Made with 💚 and vibes
-        </footer>
-      </div>
-    </main>
+        {/* Testimonials */}
+        <section className="py-16 sm:py-24">
+          <div className="mx-auto max-w-6xl px-4 sm:px-6">
+            <header className="max-w-2xl">
+              <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">
+                Testimonials
+              </h2>
+              <p className="mt-4 text-base text-white/65">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+              </p>
+            </header>
+
+            <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+              {[
+                { label: "Professional", name: "Lorem Ipsum" },
+                { label: "Creative", name: "Lorem Ipsum" },
+                { label: "Community", name: "Lorem Ipsum" },
+              ].map((t) => (
+                <figure
+                  key={t.label}
+                  className={cx(surfaceCard(), "p-7", surfaceCardHover())}
+                >
+                  <div className="flex items-center gap-4">
+                    <div className="h-11 w-11 rounded-full bg-gray-800" />
+                    <div>
+                      <p className="text-sm font-semibold tracking-tight text-white/90">
+                        {t.label}
+                      </p>
+                      <p className="text-xs text-white/55">{t.name}</p>
+                    </div>
+                  </div>
+                  <blockquote className="mt-6 text-sm leading-relaxed text-white/70">
+                    “Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                    Integer nec odio. Praesent libero.”
+                  </blockquote>
+                </figure>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* CTA */}
+        <section id="cta" className="py-16 sm:py-24">
+          <div className="mx-auto max-w-6xl px-4 sm:px-6">
+            <div className="relative overflow-hidden rounded-3xl border border-white/10 bg-gradient-to-b from-white/5 to-white/[0.02] p-8 shadow-[0_0_0_1px_rgba(0,212,255,0.12)] sm:p-12">
+              <div
+                aria-hidden="true"
+                className="pointer-events-none absolute -right-24 -top-24 h-72 w-72 rounded-full blur-3xl opacity-40"
+                style={{
+                  background:
+                    "radial-gradient(circle at center, rgba(0,212,255,0.30), rgba(0,212,255,0) 70%)",
+                }}
+              />
+
+              <div className="grid gap-8 md:grid-cols-[1.35fr_0.65fr] md:items-center">
+                <div>
+                  <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">
+                    Ready to build your next app or track? Let&apos;s
+                    collaborate!
+                  </h2>
+                  <p className="mt-5 text-base text-white/65">
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                  </p>
+                </div>
+                <div className="flex flex-wrap gap-3 md:justify-end">
+                  <a
+                    href="#cta"
+                    className={cx(
+                      "inline-flex items-center justify-center rounded-md px-5 py-2.5 text-sm font-semibold",
+                      "bg-gradient-to-r from-[#00D4FF] to-[#2EE6FF] text-[#001018]",
+                      "transition hover:brightness-110 active:brightness-95",
+                      focusRing()
+                    )}
+                  >
+                    Hire Me
+                  </a>
+                  <a
+                    href="#"
+                    className={cx(
+                      "inline-flex items-center justify-center rounded-md px-5 py-2.5 text-sm font-semibold",
+                      "border border-white/15 bg-white/5 text-white/90",
+                      "transition hover:border-white/25 hover:bg-white/10 active:bg-white/5",
+                      focusRing()
+                    )}
+                  >
+                    Contact
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Portfolio */}
+        <section id="portfolio" className="py-16 sm:py-24">
+          <div className="mx-auto max-w-6xl px-4 sm:px-6">
+            <header className="max-w-2xl">
+              <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">
+                Portfolio
+              </h2>
+              <p className="mt-4 text-base text-white/65">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+              </p>
+            </header>
+
+            <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+              {Array.from({ length: 6 }).map((_, i) => (
+                <a
+                  key={i}
+                  href="#"
+                  className={cx(surfaceCard(), "p-6", surfaceCardHover(), focusRing())}
+                >
+                  <div className="aspect-[16/10] w-full rounded-xl bg-gray-800" />
+                  <div className="mt-6 flex items-start justify-between gap-4">
+                    <div className="min-w-0">
+                      <h3 className="truncate text-base font-semibold tracking-tight">
+                        Project Title
+                      </h3>
+                      <p className="mt-2 text-sm text-white/60">
+                        Lorem ipsum dolor sit amet.
+                      </p>
+                    </div>
+                    <span className="mt-1 shrink-0 text-[#00D4FF]/80 opacity-0 transition group-hover:opacity-100">
+                      →
+                    </span>
+                  </div>
+                </a>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* Studio */}
+        <section id="studio" className="py-16 sm:py-24">
+          <div className="mx-auto max-w-6xl px-4 sm:px-6">
+            <header className="max-w-2xl">
+              <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">
+                Studio
+              </h2>
+              <p className="mt-4 text-base text-white/65">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+              </p>
+            </header>
+
+            <div className="mt-12 grid gap-6 md:grid-cols-2">
+              {[
+                { title: "Track / Playlist", body: "Lorem ipsum dolor sit amet." },
+                { title: "Sample Pack", body: "Lorem ipsum dolor sit amet." },
+              ].map((x) => (
+                <a
+                  key={x.title}
+                  href="#"
+                  className={cx(surfaceCard(), "p-6", surfaceCardHover(), focusRing())}
+                >
+                  <div className="aspect-[16/9] w-full rounded-xl bg-gray-800" />
+                  <h3 className="mt-6 text-lg font-semibold tracking-tight">
+                    {x.title}
+                  </h3>
+                  <p className="mt-2 text-sm text-white/60">{x.body}</p>
+                </a>
+              ))}
+            </div>
+          </div>
+        </section>
+      </main>
+
+      {/* Footer */}
+      <footer className="border-t border-white/10 py-14">
+        <div className="mx-auto grid max-w-6xl gap-10 px-4 sm:px-6 md:grid-cols-3 md:items-start">
+          <div>
+            <p className="font-semibold tracking-tight">Yohanes / Yoriworks</p>
+            <p className="mt-4 text-sm leading-relaxed text-white/60">
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+            </p>
+          </div>
+
+          <div>
+            <p className="text-sm font-semibold tracking-tight text-white/90">
+              Quick Links
+            </p>
+            <ul className="mt-4 space-y-2 text-sm text-white/70">
+              {[
+                { href: "#portfolio", label: "Portfolio" },
+                { href: "#studio", label: "Studio" },
+                { href: "#services", label: "Services" },
+              ].map((l) => (
+                <li key={l.href}>
+                  <a
+                    href={l.href}
+                    className={cx("hover:text-white transition", focusRing())}
+                  >
+                    {l.label}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          <div>
+            <p className="text-sm font-semibold tracking-tight text-white/90">
+              Social
+            </p>
+            <div className="mt-4 flex items-center gap-3">
+              {[
+                { label: "LinkedIn", text: "in" },
+                { label: "GitHub", text: "gh" },
+                { label: "Instagram", text: "ig" },
+              ].map((s) => (
+                <a
+                  key={s.label}
+                  href="#"
+                  aria-label={s.label}
+                  className={cx(
+                    "grid h-10 w-10 place-items-center rounded-md",
+                    "border border-white/10 bg-white/5 text-xs font-semibold text-white/80",
+                    "transition hover:border-white/20 hover:bg-white/10 hover:text-white",
+                    focusRing()
+                  )}
+                >
+                  {s.text}
+                </a>
+              ))}
+            </div>
+          </div>
+        </div>
+
+        <div className="mx-auto mt-10 max-w-6xl px-4 sm:px-6">
+          <p className="text-xs text-white/40">Copyright © 2026</p>
+        </div>
+      </footer>
+    </div>
   );
 }
+
