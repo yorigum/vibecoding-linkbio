@@ -2,7 +2,7 @@
 
 import { Container } from "@/components/layout/Container";
 import { Badge } from "@/components/ui";
-import { Github, Instagram, Linkedin } from "lucide-react";
+import { FiGithub, FiInstagram, FiLinkedin } from "react-icons/fi";
 
 export interface FooterLink {
   href: string;
@@ -23,7 +23,7 @@ export function Footer({
   className,
   links = [
     { href: "#portfolio", label: "Portfolio" },
-    { href: "#studio", label: "Studio" },
+    { href: "#featured", label: "Featured Media" },
     { href: "#services", label: "Services" },
   ],
   copyright = "Copyright © 2026",
@@ -35,7 +35,7 @@ export function Footer({
           <div>
             <p className="font-semibold tracking-tight text-primary">YORIGUM</p>
             <p className="mt-4 text-sm leading-relaxed text-secondary">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+              I'm Yohanes Rizky Gumilir — a Senior Android Developer specializing in Kotlin & Jetpack Compose, and a passionate Music Producer.
             </p>
             <div className="mt-5">
               <Badge variant="outline">Mobile • Music</Badge>
@@ -66,13 +66,15 @@ export function Footer({
             </p>
             <div className="mt-4 flex items-center gap-3">
               {[
-                { label: "LinkedIn", Icon: Linkedin },
-                { label: "GitHub", Icon: Github },
-                { label: "Instagram", Icon: Instagram },
-              ].map(({ label, Icon }) => (
+                { label: "LinkedIn", Icon: FiLinkedin, href: "https://www.linkedin.com/in/yorigum/" },
+                { label: "GitHub", Icon: FiGithub, href: "https://github.com/yorigum" },
+                { label: "Instagram", Icon: FiInstagram, href: "https://www.instagram.com/yohanesrizky/" },
+              ].map(({ label, Icon, href }) => (
                 <a
                   key={label}
-                  href="#"
+                  href={href}
+                  target="_blank"
+                  rel="noopener noreferrer"
                   aria-label={label}
                   className="grid h-10 w-10 place-items-center rounded-md border border-border/50 bg-primary/5 text-secondary transition hover:border-border hover:bg-primary/10 hover:text-primary focus:outline-none focus-visible:ring-2 focus-visible:ring-link/60 focus-visible:ring-offset-2 focus-visible:ring-offset-page"
                 >

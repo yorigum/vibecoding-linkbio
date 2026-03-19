@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import type { MouseEventHandler, ReactNode } from "react";
-import { Loader2 } from "lucide-react";
+import { FiLoader } from "react-icons/fi";
 
 export type ButtonVariant = "primary" | "secondary" | "outline" | "ghost" | "link";
 
@@ -71,7 +71,7 @@ export function Button({
   const isDisabled = disabled || loading;
   const content = (
     <>
-      {loading ? <Loader2 className="h-4 w-4 animate-spin" /> : null}
+      {loading ? <FiLoader className="h-4 w-4 animate-spin" /> : null}
       <span className={cx(loading ? "opacity-90" : undefined)}>{children}</span>
     </>
   );

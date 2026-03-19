@@ -1,7 +1,7 @@
 "use client";
 
 import type { ReactNode } from "react";
-import type { LucideIcon } from "lucide-react";
+import type { IconType } from "react-icons";
 
 export type BadgeVariant = "default" | "outline" | "success" | "warning";
 
@@ -9,7 +9,7 @@ export interface BadgeProps {
   className?: string;
   children: ReactNode;
   variant?: BadgeVariant;
-  icon?: LucideIcon;
+  icon?: IconType;
 }
 
 function cx(...parts: Array<string | false | null | undefined>): string {

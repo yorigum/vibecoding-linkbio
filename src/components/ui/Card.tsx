@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import type { ReactNode } from "react";
-import type { LucideIcon } from "lucide-react";
+import type { IconType } from "react-icons";
 
 export type CardVariant = "primary" | "secondary" | "outline";
 
@@ -10,7 +10,7 @@ export interface CardProps {
   className?: string;
   title?: string;
   description?: string;
-  icon?: LucideIcon;
+  icon?: IconType;
   children?: ReactNode;
   variant?: CardVariant;
   href?: string;

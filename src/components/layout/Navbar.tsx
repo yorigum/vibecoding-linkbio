@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import { Button } from "@/components/ui";
 import { Container } from "@/components/layout/Container";
 import { ThemeToggle } from "@/components/ui/ThemeToggle";
-import { Menu, X } from "lucide-react";
+import { FiMenu, FiX } from "react-icons/fi";
 import { motion, AnimatePresence } from "motion/react";
 
 export interface NavbarLink {
@@ -29,7 +29,7 @@ export function Navbar({
   brand = "YORIGUM",
   links = [
     { href: "#portfolio", label: "Portfolio" },
-    { href: "#studio", label: "Studio" },
+    { href: "#featured", label: "Featured Media" },
     { href: "#services", label: "Services" },
   ],
   ctaLabel = "Hire Me",
@@ -42,7 +42,7 @@ export function Navbar({
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 20);
     };
-    
+
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
@@ -112,7 +112,7 @@ export function Navbar({
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
             aria-label="Toggle menu"
           >
-            {mobileMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+            {mobileMenuOpen ? <FiX className="h-6 w-6" /> : <FiMenu className="h-6 w-6" />}
           </button>
         </div>
       </Container>

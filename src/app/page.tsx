@@ -163,11 +163,55 @@ export default function Page() {
                 </a>
               ))}
             </div>
+
+            {/* Featured Media Embeds */}
+            <div id="featured" className="mt-16 sm:mt-24 pt-16 border-t border-border/50">
+              <header className="mb-8">
+                <h3 className="text-2xl font-bold tracking-tight text-primary">
+                  Featured Media
+                </h3>
+                <p className="mt-2 text-sm text-secondary">
+                  Listen to my latest audio productions and sound designs on Spotify, or watch my latest video content.
+                </p>
+              </header>
+              <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                {/* Spotify Column */}
+                <div className="overflow-hidden rounded-2xl border border-border/50 bg-card shadow-sm p-1">
+                  <iframe
+                    data-testid="embed-iframe"
+                    style={{ borderRadius: "12px", border: 0 }}
+                    src="https://open.spotify.com/embed/playlist/1oOWuY9puFTkLsHrMM5bw9?utm_source=generator"
+                    width="100%"
+                    height="352"
+                    allowFullScreen={true}
+                    allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+                    loading="lazy"
+                    title="Spotify Playlist"
+                  />
+                </div>
+
+                {/* YouTube Column */}
+                <div className="overflow-hidden rounded-2xl border border-border/50 bg-card shadow-sm p-1 flex items-center justify-center">
+                  <iframe
+                    src="https://www.youtube.com/embed/videoseries?list=PLgteS5SOEoTLHsYAwDlfvD6iGEmGAhsD5"
+                    title="YouTube Playlist"
+                    width="100%"
+                    height="352"
+                    style={{ borderRadius: "12px", border: 0 }}
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    referrerPolicy="strict-origin-when-cross-origin"
+                    allowFullScreen={true}
+                    loading="lazy"
+                  />
+                </div>
+              </div>
+            </div>
+
           </div>
         </section>
 
         {/* Studio */}
-        <section id="studio" className="py-16 sm:py-24">
+        <section id="studio" className="py-16 sm:py-24" hidden>
           <div className="mx-auto max-w-6xl px-4 sm:px-6">
             <header className="max-w-2xl">
               <h2 className="text-3xl font-bold tracking-tight sm:text-4xl text-primary">
@@ -178,7 +222,7 @@ export default function Page() {
               </p>
             </header>
 
-            <div className="mt-12 grid gap-6 md:grid-cols-2">
+            <div className="mt-12 grid gap-6 md:grid-cols-2" >
               {pageData.studio.items.map((x) => (
                 <a
                   key={x.title}

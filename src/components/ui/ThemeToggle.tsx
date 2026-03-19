@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { Moon, Sun } from "lucide-react";
+import { FiMoon, FiSun } from "react-icons/fi";
 import { Button } from "./Button";
 
 export function ThemeToggle() {
@@ -26,8 +26,8 @@ export function ThemeToggle() {
   };
 
   return (
-    <Button variant="ghost" className="px-3 py-2" onClick={toggleTheme} title="Toggle Theme" aria-label="Toggle Theme">
-      {isDark ? <Sun className="h-5 w-5 text-secondary" /> : <Moon className="h-5 w-5 text-secondary" />}
+    <Button variant="ghost" className="p-2 min-h-0 min-w-0" onClick={toggleTheme} title="Toggle Theme" aria-label="Toggle Theme">
+      {isDark ? <FiSun className="h-5 w-5 text-secondary" /> : <FiMoon className="h-5 w-5 text-secondary" />}
     </Button>
   );
 }

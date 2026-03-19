@@ -14,19 +14,19 @@
     "primaryCtaLabel": "View Projects",
     "primaryCtaHref": "#portfolio",
     "secondaryCtaLabel": "Listen to Tracks",
-    "secondaryCtaHref": "#studio",
+    "secondaryCtaHref": "#featured",
     "stats": [
       {
         "label": "Years Experience",
-        "value": "10+"
+        "value": "5+"
       },
       {
         "label": "Apps Shipped",
-        "value": "50+"
+        "value": "5+"
       },
       {
         "label": "Tracks Produced",
-        "value": "200+"
+        "value": "20+"
       }
     ]
   },
