@@ -8,7 +8,7 @@
     "location": "Jakarta, Indonesia"
   },
   "hero": {
-    "badge": "✨ Now in Beta",
+    "badge": "⚠️ UNDER DEVELOPMENT",
     "headline": "Code that Scales,\nSound that Resonates",
     "subtitle": "I'm Yohanes Rizky Gumilir — a Senior Android Developer specializing in Kotlin & Jetpack Compose, and a passionate Music Producer.",
     "primaryCtaLabel": "View Projects",
@@ -16,9 +16,18 @@
     "secondaryCtaLabel": "Listen to Tracks",
     "secondaryCtaHref": "#studio",
     "stats": [
-      { "label": "Years Experience", "value": "10+" },
-      { "label": "Apps Shipped", "value": "50+" },
-      { "label": "Tracks Produced", "value": "200+" }
+      {
+        "label": "Years Experience",
+        "value": "10+"
+      },
+      {
+        "label": "Apps Shipped",
+        "value": "50+"
+      },
+      {
+        "label": "Tracks Produced",
+        "value": "200+"
+      }
     ]
   },
   "features": {
