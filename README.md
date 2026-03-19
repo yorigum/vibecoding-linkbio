@@ -1,3 +1,30 @@
+# Portfolio: Yohanes — Mobile Dev & Music Producer
+
+This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+
+---
+
+## 👤 About Me
+**Yohanes** adalah seorang **Mobile Developer** profesional yang berbasis di Jakarta, dengan spesialisasi pengembangan aplikasi Android menggunakan **Kotlin** dan **Jetpack Compose**. Di luar dunia koding, ia adalah seorang **Music Producer** dan desainer audio yang aktif di platform kreatif.
+
+*   📱 **Mobile Dev:** Berpengalaman dalam membangun arsitektur aplikasi yang scalable (saat ini berkarya di Astra).
+*   🎵 **Music Production:** Produser musik dengan spesialisasi *sample packs* dan *audio scoring* (Fiverr: yohanesrizkyg).
+*   🚀 **Vision:** Menggabungkan presisi logika pemrograman dengan estetika harmoni audio.
+
+## 🎯 Project Goals
+Proyek ini dibangun sebagai platform sentral untuk:
+1.  **Professional Showcase:** Menampilkan portfolio teknis pengembangan aplikasi Android.
+2.  **Audio Hub:** Ruang pamer untuk karya produksi musik dan layanan audio dari brand *yoriworks*.
+3.  **Personal Branding:** Memperkuat identitas digital sebagai pengembang yang memiliki sisi kreatif tinggi.
+4.  **Connect:** Mempermudah kolaborasi profesional baik di bidang teknologi maupun musik.
+
+## 🛠 Tech Stack
+*   **Framework:** Next.js 15+ (App Router)
+*   **Language:** TypeScript
+*   **Styling:** Tailwind CSS (Custom Dark Theme)
+*   **Components:** Atomic Architecture (UI, Layout, Sections)
+*   **Icons:** Lucide React
+
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
 ## Getting Started
