@@ -28,7 +28,7 @@ function cx(...parts: Array<string | false | null | undefined>) {
 
 export function Hero({
   className,
-  badge = "✨ Now in Beta",
+  badge = "⚠️ UNDER DEVELOPMENT",
   headline = "Code that Scales,\nSound that Resonates",
   subtitle = "I'm Yohanes Rizky Gumilir — a Senior Android Developer specializing in Kotlin & Jetpack Compose, and a passionate Music Producer.",
   primaryCtaLabel = "View Projects",
@@ -58,8 +58,8 @@ export function Hero({
   return (
     <section className={cx("relative overflow-hidden py-20 sm:py-32", className)}>
       {/* SaaS subtle grid pattern background */}
-      <div 
-        aria-hidden="true" 
+      <div
+        aria-hidden="true"
         className="pointer-events-none absolute inset-0 -z-10 bg-[linear-gradient(to_right,var(--border-color)_1px,transparent_1px),linear-gradient(to_bottom,var(--border-color)_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)] opacity-20"
       ></div>
 
@@ -81,22 +81,22 @@ export function Hero({
             </motion.div>
           )}
 
-          <motion.h1 
-            variants={{ hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0 } }} 
+          <motion.h1
+            variants={{ hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0 } }}
             className="text-5xl font-extrabold leading-[1.15] tracking-tight text-primary sm:text-7xl"
           >
             {renderHeadline(headline)}
           </motion.h1>
 
-          <motion.p 
-            variants={{ hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0 } }} 
+          <motion.p
+            variants={{ hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0 } }}
             className="mt-6 max-w-2xl text-lg leading-relaxed text-secondary sm:text-xl"
           >
             {subtitle}
           </motion.p>
 
-          <motion.div 
-            variants={{ hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0 } }} 
+          <motion.div
+            variants={{ hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0 } }}
             className="mt-10 flex flex-col sm:flex-row flex-wrap justify-center gap-4"
           >
             <Button href={primaryCtaHref} variant="primary" className="h-12 px-8 text-sm shadow-md transition-shadow hover:shadow-lg">
@@ -106,9 +106,9 @@ export function Hero({
               {secondaryCtaLabel}
             </Button>
           </motion.div>
-          
+
           {stats && stats.length > 0 && (
-            <motion.div 
+            <motion.div
               variants={{ hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0 } }}
               className="mt-16 sm:mt-24 grid w-full max-w-3xl grid-cols-1 gap-4 sm:grid-cols-3 sm:gap-8 border-t border-border/50 pt-10"
             >
