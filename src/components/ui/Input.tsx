@@ -28,20 +28,20 @@ function cx(...parts: Array<string | false | null | undefined>): string {
 }
 
 const wrapperBase =
-  "group flex w-full items-center gap-2 rounded-xl border px-3 py-2 text-sm " +
-  "transition focus-within:ring-2 focus-within:ring-[#00D4FF]/60 focus-within:ring-offset-2 focus-within:ring-offset-[#0a0a0a]";
+  "group flex w-full items-center gap-2 rounded-xl border px-3 py-2 text-xs md:text-sm " +
+  "transition focus-within:ring-2 focus-within:ring-link/60 focus-within:ring-offset-2 focus-within:ring-offset-page";
 
 const variantClasses: Record<InputVariant, string> = {
   default:
-    "bg-[#0b0b0b] border-white/15 text-white/90 " +
-    "hover:border-white/25 focus-within:border-[#00D4FF]/70",
+    "bg-card border-border/50 text-primary " +
+    "hover:border-border focus-within:border-link/70",
   ghost:
-    "bg-transparent border-white/10 text-white/90 " +
-    "hover:border-white/25 focus-within:border-[#00D4FF]/70",
+    "bg-transparent border-transparent text-primary " +
+    "hover:border-border focus-within:border-link/70",
 };
 
 const inputBase =
-  "flex-1 bg-transparent text-sm text-white placeholder:text-white/35 " +
+  "flex-1 bg-transparent text-xs md:text-sm text-primary placeholder:text-muted " +
   "outline-none border-none min-w-0";
 
 export function Input({
@@ -70,13 +70,13 @@ export function Input({
         )}
       >
         {LeadingIcon ? (
-          <span className="text-white/45 group-focus-within:text-[#00D4FF]">
+          <span className="text-muted group-focus-within:text-link">
             <LeadingIcon className="h-4 w-4" />
           </span>
         ) : null}
 
         {addonLeft ? (
-          <span className="text-xs text-white/55">{addonLeft}</span>
+          <span className="text-xs text-muted">{addonLeft}</span>
         ) : null}
 
         <input
@@ -86,18 +86,18 @@ export function Input({
         />
 
         {addonRight ? (
-          <span className="text-xs text-white/55">{addonRight}</span>
+          <span className="text-xs text-muted">{addonRight}</span>
         ) : null}
 
         {TrailingIcon ? (
-          <span className="text-white/45 group-focus-within:text-[#00D4FF]">
+          <span className="text-muted group-focus-within:text-link">
             <TrailingIcon className="h-4 w-4" />
           </span>
         ) : null}
       </div>
 
       {error ? (
-        <p className="text-xs text-red-400" role="alert">
+        <p className="text-xs text-error" role="alert">
           {error}
         </p>
       ) : null}

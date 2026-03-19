@@ -3,6 +3,7 @@
 import { Container } from "@/components/layout/Container";
 import { Button, Input } from "@/components/ui";
 import { Mail } from "lucide-react";
+import { motion } from "motion/react";
 
 export interface CTAProps {
   className?: string;
@@ -32,7 +33,13 @@ export function CTA({
   return (
     <section id={id} className={cx("py-16 sm:py-24", className)}>
       <Container>
-        <div className="relative overflow-hidden rounded-3xl border border-white/10 bg-gradient-to-b from-white/5 to-white/[0.02] p-8 shadow-[0_0_0_1px_rgba(0,212,255,0.12)] sm:p-12">
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8, ease: "easeOut" }}
+          className="relative overflow-hidden rounded-3xl border border-border/50 bg-gradient-to-b from-primary/5 to-primary/[0.02] p-8 shadow-md sm:p-12"
+        >
           <div
             aria-hidden="true"
             className="pointer-events-none absolute -right-24 -top-24 h-72 w-72 rounded-full blur-3xl opacity-40"
@@ -44,10 +51,10 @@ export function CTA({
 
           <div className="grid gap-10 md:grid-cols-[1.35fr_0.65fr] md:items-center">
             <div>
-              <h2 className="text-3xl font-bold tracking-tight text-white sm:text-4xl">
+              <h2 className="text-3xl font-bold tracking-tight text-primary sm:text-4xl">
                 {title}
               </h2>
-              <p className="mt-5 text-base text-white/65">{subtitle}</p>
+              <p className="mt-5 text-base text-secondary">{subtitle}</p>
 
               <div className="mt-7 max-w-md">
                 <Input
@@ -67,7 +74,7 @@ export function CTA({
               </Button>
             </div>
           </div>
-        </div>
+        </motion.div>
       </Container>
     </section>
   );

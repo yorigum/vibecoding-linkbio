@@ -3,6 +3,7 @@
 import { Container } from "@/components/layout/Container";
 import { Card } from "@/components/ui";
 import { AudioLines, Blend, Smartphone } from "lucide-react";
+import { motion } from "motion/react";
 
 export interface FeatureItem {
   title: string;
@@ -59,28 +60,44 @@ export function Features({
   return (
     <section id={id} className={cx("py-16 sm:py-24", className)}>
       <Container>
-        <header className="max-w-2xl">
-          <h2 className="text-3xl font-bold tracking-tight text-white sm:text-4xl">
+        <motion.header
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+          className="max-w-2xl"
+        >
+          <h2 className="text-3xl font-bold tracking-tight text-primary sm:text-4xl">
             {title}
           </h2>
-          <p className="mt-4 text-base text-white/65">{subtitle}</p>
-        </header>
+          <p className="mt-4 text-base text-secondary">{subtitle}</p>
+        </motion.header>
 
-        <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        <motion.div
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          variants={{
+            hidden: { opacity: 0 },
+            visible: { opacity: 1, transition: { staggerChildren: 0.1 } },
+          }}
+          className="mt-12 grid gap-6 md:grid-cols-2 lg:grid-cols-3"
+        >
           {items.map((item) => {
             const Icon = iconFor(item.icon);
             return (
-              <Card
-                key={item.title}
-                variant="primary"
-                className="p-7 hover:-translate-y-0.5 transition"
-                title={item.title}
-                description={item.description}
-                icon={Icon}
-              />
+              <motion.div key={item.title} variants={{ hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0 } }}>
+                <Card
+                  variant="primary"
+                  className="p-7 hover:-translate-y-0.5 transition"
+                  title={item.title}
+                  description={item.description}
+                  icon={Icon}
+                />
+              </motion.div>
             );
           })}
-        </div>
+        </motion.div>
       </Container>
     </section>
   );

@@ -1,0 +1,136 @@
+{
+  "meta": {
+    "name": "Yohanes Rizky Gumilir",
+    "handle": "Yoriworks",
+    "email": "yoriworks@gmail.com",
+    "linkedin": "https://linkedin.com/in/yorigum",
+    "website": "https://yorigum.xyz",
+    "location": "Jakarta, Indonesia"
+  },
+  "hero": {
+    "badge": "✨ Now in Beta",
+    "headline": "Code that Scales,\nSound that Resonates",
+    "subtitle": "I'm Yohanes Rizky Gumilir — a Senior Android Developer specializing in Kotlin & Jetpack Compose, and a passionate Music Producer.",
+    "primaryCtaLabel": "View Projects",
+    "primaryCtaHref": "#portfolio",
+    "secondaryCtaLabel": "Listen to Tracks",
+    "secondaryCtaHref": "#studio",
+    "stats": [
+      { "label": "Years Experience", "value": "10+" },
+      { "label": "Apps Shipped", "value": "50+" },
+      { "label": "Tracks Produced", "value": "200+" }
+    ]
+  },
+  "features": {
+    "id": "services",
+    "title": "Services built for speed & taste",
+    "subtitle": "I bring a unique blend of technical expertise and artistic vision to every project.",
+    "items": [
+      {
+        "title": "Android Development",
+        "description": "Building high-performance, scalable Android apps using Kotlin, Jetpack Compose, Coroutines, Flow, and Clean Architecture.",
+        "icon": "mobile"
+      },
+      {
+        "title": "Music Production",
+        "description": "Professional music production, film scoring, audio engineering, and sample pack creation using Cubase Pro.",
+        "icon": "audio"
+      },
+      {
+        "title": "Creative Synergy",
+        "description": "Bridging engineering precision and artistic intuition — from UI/UX design to cinematic sound design.",
+        "icon": "synergy"
+      }
+    ]
+  },
+  "howItWorks": {
+    "title": "How it works",
+    "subtitle": "My process for turning ideas into reality, whether it's code or music.",
+    "steps": [
+      {
+        "title": "Ideation",
+        "body": "Analyzing user needs, defining architecture, or discovering the right musical direction and emotional tone for the project."
+      },
+      {
+        "title": "Development",
+        "body": "Writing clean, testable Kotlin code with Jetpack Compose and modern Android patterns — or arranging and sound-designing in Cubase Pro."
+      },
+      {
+        "title": "Delivery",
+        "body": "Deploying polished apps to Google Play Store or delivering final mastered audio stems ready for release."
+      }
+    ]
+  },
+  "testimonials": {
+    "title": "Testimonials",
+    "subtitle": "Here is what people say about working with me.",
+    "items": [
+      {
+        "label": "Professional",
+        "name": "Jane Doe",
+        "quote": "An absolute pleasure to work with. Delivered the Android app on time and way beyond our expectations."
+      },
+      {
+        "label": "Creative",
+        "name": "John Smith",
+        "quote": "The sample packs are a game changer. Super clean audio and extremely creative sound design."
+      },
+      {
+        "label": "Community",
+        "name": "Alex Johnson",
+        "quote": "Bridging the gap between engineering and art is hard, but this portfolio does it effortlessly."
+      }
+    ]
+  },
+  "portfolio": {
+    "title": "Portfolio",
+    "subtitle": "A selection of my best Android applications and side projects.",
+    "projects": [
+      {
+        "title": "FitTrack — Fitness Tracker App",
+        "description": "A Jetpack Compose Android app for fitness tracking with real-time activity logging, step counter, and health statistics dashboard.",
+        "href": "#",
+        "image": "https://images.pexels.com/photos/6298479/pexels-photo-6298479.jpeg"
+      },
+      {
+        "title": "ShopFlow — E-Commerce Platform",
+        "description": "E-commerce Android app with complex Compose UI, GraphQL integration, cart management, and optimized product lists.",
+        "href": "#",
+        "image": "https://images.pexels.com/photos/230544/pexels-photo-230544.jpeg"
+      },
+      {
+        "title": "SocialPulse — Social Media Dashboard",
+        "description": "Social media analytics dashboard integrating multiple REST APIs, real-time data streaming with Kotlin Flow, and interactive charts.",
+        "href": "#",
+        "image": "https://images.pexels.com/photos/97080/pexels-photo-97080.jpeg"
+      }
+    ]
+  },
+  "studio": {
+    "title": "Studio",
+    "subtitle": "Explore my latest music productions, film scores, and sample packs.",
+    "items": [
+      {
+        "title": "Cinematic & Film Scoring",
+        "body": "Original orchestral and cinematic compositions for film and media projects, crafted with layered textures and dynamic arrangements.",
+        "href": "#",
+        "image": "https://images.pexels.com/photos/6577455/pexels-photo-6577455.jpeg"
+      },
+      {
+        "title": "Synth & Sample Packs",
+        "body": "Curated royalty-free synthesizer and cinematic sample packs for modern music producers, built with vintage and modern synths.",
+        "href": "#",
+        "image": "https://images.pexels.com/photos/6715455/pexels-photo-6715455.jpeg"
+      }
+    ]
+  },
+  "cta": {
+    "id": "cta",
+    "title": "Ready to build your next app or track? Let's collaborate!",
+    "subtitle": "Available for remote and hybrid projects from Jakarta, Indonesia. Let's craft something amazing together.",
+    "primaryCtaLabel": "Hire Me",
+    "primaryCtaHref": "mailto:yoriworks@gmail.com?subject=Project%20Inquiry%20-%20Portfolio",
+    "secondaryCtaLabel": "Connect on LinkedIn",
+    "secondaryCtaHref": "https://linkedin.com/in/yorigum"
+  }
+}

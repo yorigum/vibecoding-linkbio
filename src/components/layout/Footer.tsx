@@ -29,12 +29,12 @@ export function Footer({
   copyright = "Copyright © 2026",
 }: FooterProps) {
   return (
-    <footer className={cx("border-t border-white/10 py-14", className)}>
+    <footer className={cx("border-t border-border/50 py-14", className)}>
       <Container>
         <div className="grid gap-10 md:grid-cols-3 md:items-start">
           <div>
-            <p className="font-semibold tracking-tight">Yohanes / Yoriworks</p>
-            <p className="mt-4 text-sm leading-relaxed text-white/60">
+            <p className="font-semibold tracking-tight text-primary">YORIGUM</p>
+            <p className="mt-4 text-sm leading-relaxed text-secondary">
               Lorem ipsum dolor sit amet, consectetur adipiscing elit.
             </p>
             <div className="mt-5">
@@ -43,15 +43,15 @@ export function Footer({
           </div>
 
           <div>
-            <p className="text-sm font-semibold tracking-tight text-white/90">
+            <p className="text-sm font-semibold tracking-tight text-primary">
               Quick Links
             </p>
-            <ul className="mt-4 space-y-2 text-sm text-white/70">
+            <ul className="mt-4 space-y-2 text-sm text-secondary">
               {links.map((l) => (
                 <li key={l.href}>
                   <a
                     href={l.href}
-                    className="transition hover:text-white focus:outline-none focus-visible:ring-2 focus-visible:ring-[#00D4FF]/60 focus-visible:ring-offset-2 focus-visible:ring-offset-[#0a0a0a]"
+                    className="transition hover:text-primary focus:outline-none focus-visible:ring-2 focus-visible:ring-link/60 focus-visible:ring-offset-2 focus-visible:ring-offset-page"
                   >
                     {l.label}
                   </a>
@@ -61,7 +61,7 @@ export function Footer({
           </div>
 
           <div>
-            <p className="text-sm font-semibold tracking-tight text-white/90">
+            <p className="text-sm font-semibold tracking-tight text-primary">
               Social
             </p>
             <div className="mt-4 flex items-center gap-3">
@@ -74,7 +74,7 @@ export function Footer({
                   key={label}
                   href="#"
                   aria-label={label}
-                  className="grid h-10 w-10 place-items-center rounded-md border border-white/10 bg-white/5 text-white/80 transition hover:border-white/20 hover:bg-white/10 hover:text-white focus:outline-none focus-visible:ring-2 focus-visible:ring-[#00D4FF]/60 focus-visible:ring-offset-2 focus-visible:ring-offset-[#0a0a0a]"
+                  className="grid h-10 w-10 place-items-center rounded-md border border-border/50 bg-primary/5 text-secondary transition hover:border-border hover:bg-primary/10 hover:text-primary focus:outline-none focus-visible:ring-2 focus-visible:ring-link/60 focus-visible:ring-offset-2 focus-visible:ring-offset-page"
                 >
                   <Icon className="h-4 w-4" />
                 </a>
@@ -84,7 +84,7 @@ export function Footer({
         </div>
 
         <div className="mt-10">
-          <p className="text-xs text-white/40">{copyright}</p>
+          <p className="text-xs text-muted">{copyright}</p>
         </div>
       </Container>
     </footer>

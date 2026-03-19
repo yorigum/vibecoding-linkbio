@@ -17,7 +17,7 @@ function cx(...parts: Array<string | false | null | undefined>): string {
 }
 
 const baseClasses =
-  "inline-flex items-center gap-1.5 rounded-full px-2.5 py-1 text-xs font-medium " +
+  "inline-flex items-center gap-1.5 rounded-full px-2 py-0.5 text-[10px] md:px-2.5 md:py-1 md:text-xs font-medium " +
   "transition " +
   "focus:outline-none focus-visible:ring-2 focus-visible:ring-[#00D4FF]/60 focus-visible:ring-offset-2 focus-visible:ring-offset-[#0a0a0a]";
 
