@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { Button } from "@/components/ui";
 import { Container } from "@/components/layout/Container";
 import { ThemeToggle } from "@/components/ui/ThemeToggle";
+import { BrandLogo } from "@/components/ui/BrandLogo";
 import { FiMenu, FiX } from "react-icons/fi";
 import { motion, AnimatePresence } from "motion/react";
 
@@ -14,10 +15,12 @@ export interface NavbarLink {
 
 export interface NavbarProps {
   className?: string;
-  brand?: string;
+  brand?: React.ReactNode;
   links?: NavbarLink[];
   ctaLabel?: string;
   ctaHref?: string;
+  lang?: "en" | "id";
+  onLangChange?: (lang: "en" | "id") => void;
 }
 
 function cx(...parts: Array<string | false | null | undefined>) {
@@ -26,14 +29,16 @@ function cx(...parts: Array<string | false | null | undefined>) {
 
 export function Navbar({
   className,
-  brand = "YORIGUM",
+  brand = <BrandLogo className="h-32 w-auto" />,
   links = [
     { href: "#portfolio", label: "Portfolio" },
-    { href: "#featured", label: "Featured Media" },
+    //    { href: "#featured", label: "Featured Media" },
     { href: "#services", label: "Services" },
   ],
   ctaLabel = "Hire Me",
   ctaHref = "#cta",
+  lang = "en",
+  onLangChange,
 }: NavbarProps) {
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -55,6 +60,12 @@ export function Navbar({
       document.body.style.overflow = "";
     }
   }, [mobileMenuOpen]);
+
+  const toggleLang = () => {
+    if (onLangChange) {
+      onLangChange(lang === "en" ? "id" : "en");
+    }
+  };
 
   return (
     <nav
@@ -96,7 +107,15 @@ export function Navbar({
         </div>
 
         {/* CTA & Theme Toggle (Right - Desktop) */}
-        <div className="hidden md:flex flex-1 items-center justify-end gap-4">
+        <div className="hidden md:flex flex-1 items-center justify-end gap-3">
+          <button
+            onClick={toggleLang}
+            className="flex items-center justify-center rounded-full p-2 text-sm font-medium text-secondary transition hover:bg-hover hover:text-primary focus:outline-none"
+            title="Toggle Language"
+            aria-label="Toggle Language"
+          >
+            {lang === "en" ? "EN" : "ID"}
+          </button>
           <ThemeToggle />
           <Button href={ctaHref} variant="primary" className="shadow-sm">
             {ctaLabel}
@@ -104,11 +123,18 @@ export function Navbar({
         </div>
 
         {/* Mobile controls */}
-        <div className="flex items-center gap-4 md:hidden">
+        <div className="flex items-center gap-2 md:hidden">
+          <button
+            onClick={toggleLang}
+            className="flex items-center justify-center rounded-full p-2 text-sm font-medium text-secondary transition hover:bg-hover hover:text-primary focus:outline-none"
+            aria-label="Toggle Language"
+          >
+            {lang === "en" ? "EN" : "ID"}
+          </button>
           <ThemeToggle />
           <button
             type="button"
-            className="rounded-md p-1 text-secondary transition hover:bg-hover hover:text-primary focus:outline-none"
+            className="rounded-md p-1 ml-2 text-secondary transition hover:bg-hover hover:text-primary focus:outline-none"
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
             aria-label="Toggle menu"
           >

@@ -15,7 +15,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Hi Fellas!",
+  title: "Hi, I'm Yohanes Rizky Gumilir! | Nice to Meet You",
   description: "Welcome to my personal website",
 };
 

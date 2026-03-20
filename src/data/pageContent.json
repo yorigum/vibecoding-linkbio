@@ -1,145 +1,392 @@
 {
-  "meta": {
-    "name": "Yohanes Rizky Gumilir",
-    "handle": "Yoriworks",
-    "email": "yoriworks@gmail.com",
-    "linkedin": "https://linkedin.com/in/yorigum",
-    "website": "https://yorigum.xyz",
-    "location": "Jakarta, Indonesia"
+  "en": {
+    "meta": {
+      "name": "Yohanes Rizky Gumilir",
+      "handle": "Yoriworks",
+      "email": "yoriworks@gmail.com",
+      "linkedin": "https://linkedin.com/in/yorigum",
+      "website": "https://yorigum.xyz",
+      "location": "Jakarta, Indonesia"
+    },
+    "hero": {
+      "badge": "🚀 UNDER DEVELOPMENT",
+      "headline": "Scalable Architecture,\nSeamless Mobile Experiences",
+      "subtitle": "I'm Yohanes Rizky — a Senior Android Developer specializing in Kotlin, Jetpack Compose, and Enterprise-grade Mobile Architecture.",
+      "primaryCtaLabel": "View Tech Stack",
+      "primaryCtaHref": "#services",
+      "secondaryCtaLabel": "See Portfolio",
+      "secondaryCtaHref": "#portfolio",
+      "stats": [
+        {
+          "label": "Years Experience",
+          "value": "5+"
+        },
+        {
+          "label": "Apps Shipped",
+          "value": "10+"
+        },
+        {
+          "label": "PRs Reviewed",
+          "value": "200+"
+        }
+      ]
+    },
+    "features": {
+      "id": "services",
+      "title": "Built for Performance & Scalability",
+      "subtitle": "I focus on writing clean, maintainable code that drives business growth.",
+      "items": [
+        {
+          "title": "Modern Android Stack",
+          "description": "Expert-level implementation of Kotlin, Jetpack Compose, Coroutines, and Flow for high-performance UI and state management.",
+          "icon": "code"
+        },
+        {
+          "title": "Architecture & Clean Code",
+          "description": "Implementing MVVM/MVI patterns and Clean Architecture to ensure codebases are testable, modular, and easy to scale.",
+          "icon": "layers"
+        },
+        {
+          "title": "Backend Integration",
+          "description": "Seamless integration with Firebase/Firestore, REST APIs, and GraphQL to power real-time data driven applications.",
+          "icon": "cloud"
+        }
+      ]
+    },
+    "howItWorks": {
+      "title": "My Development Process",
+      "subtitle": "Turning complex business requirements into elegant mobile solutions.",
+      "steps": [
+        {
+          "title": "Architectural Design",
+          "body": "Defining the data flow, dependency injection (Hilt/Koin), and modular structure before writing the first line of code."
+        },
+        {
+          "title": "Iterative Development",
+          "body": "Building features with Jetpack Compose using a design-system-first approach, ensuring UI consistency and performance."
+        },
+        {
+          "title": "Testing & CI/CD",
+          "body": "Writing Unit and Instrumented tests while automating the deployment pipeline for faster, more reliable releases."
+        }
+      ]
+    },
+    "testimonials": {
+      "title": "Professional Feedback",
+      "subtitle": "What colleagues and stakeholders say about my technical contributions.",
+      "items": [
+        {
+          "label": "Technical Excellence",
+          "name": "Engineering Lead",
+          "quote": "Yohanes has an incredible eye for clean architecture. His transition to Jetpack Compose significantly reduced our codebase complexity."
+        },
+        {
+          "label": "Reliability",
+          "name": "Project Manager",
+          "quote": "One of the most dependable developers I've worked with. He consistently delivers high-quality features ahead of schedule."
+        },
+        {
+          "label": "Mentorship",
+          "name": "Junior Developer",
+          "quote": "His code reviews are insightful and have helped the entire team improve our Kotlin standards and testing practices."
+        }
+      ]
+    },
+    "portfolio": {
+      "title": "Selected Projects",
+      "subtitle": "A look at the enterprise and specialized applications I've engineered.",
+      "projects": [
+        {
+          "title": "Porta Sancta Journey",
+          "description": "A high-traffic pilgrimage app built with Kotlin and Firestore, featuring offline-first capabilities and real-time location tracking.",
+          "href": "#",
+          "image": "https://images.pexels.com/photos/3729557/pexels-photo-3729557.jpeg"
+        },
+        {
+          "title": "Astra Enterprise Ecosystem",
+          "description": "Core module development for Astra’s internal mobile suite, focusing on modularization and reducing build times by 30%.",
+          "href": "#",
+          "image": "https://images.pexels.com/photos/1181244/pexels-photo-1181244.jpeg"
+        },
+        {
+          "title": "Clean Architecture Template",
+          "description": "A refined open-source starter kit for Jetpack Compose apps utilizing MVI, Hilt, and Coroutines Flow.",
+          "href": "https://github.com/yorigum",
+          "image": "https://images.pexels.com/photos/1779487/pexels-photo-1779487.jpeg"
+        }
+      ]
+    },
+    "studio": {
+      "title": "Open Source & Contributions",
+      "subtitle": "Giving back to the Android community through libraries and knowledge sharing.",
+      "items": [
+        {
+          "title": "Unlocking Productive Potential with Comet: Inside My Favorite AI-Powered Research & Productivity\u2026",
+          "body": "Unlocking Productive Potential with Comet: Inside My Favorite AI-Powered Research & Productivity Tool. A Developer\u2019s D...",
+          "href": "https://medium.com/@yohanesrizky/unlocking-productive-potential-with-comet-inside-my-favorite-ai-powered-research-productivity-1dcc1b3aa809",
+          "image": "https://cdn-images-1.medium.com/max/1024/0*zFbje3Is0nrEcwiJ"
+        },
+        {
+          "title": "Why Sound is the Soul of Your Creative Project (and How to Get It Perfect)",
+          "body": "Photo by Matthew Moloney on UnsplashIn today\u2019s content-saturated digital age \u2014 from captivating podcasts to viral YouTub...",
+          "href": "https://medium.com/@yohanesrizky/why-sound-is-the-soul-of-your-creative-project-and-how-to-get-it-perfect-ec9c76e0ce03",
+          "image": "https://cdn-images-1.medium.com/max/1024/0*uRacI-6cGKWJM08x"
+        }
+      ]
+    },
+    "career": {
+      "title": "Career Timeline",
+      "subtitle": "My professional journey in mobile development and software engineering.",
+      "roles": [
+        {
+          "company": "PT. Astra Graphia Information Technology (AGIT)",
+          "role": "Mobile Developer",
+          "period": "June 2022 - Present (3 years 10 months)",
+          "location": "Jakarta, Jakarta Raya, Indonesia",
+          "achievements": [
+            "Significantly contributed to the Salesman App, a key component of Astra's frontliner mobile solutions, which received an Asian Technology Excellence Award for its impact on operational productivity and customer experience in the automotive sector.",
+            "Developed and refined the user interface for key sections of the Salesman App using Kotlin and Jetpack Compose, focusing on enhancing user experience and contributing to an accelerated development lifecycle for faster feature delivery."
+          ]
+        },
+        {
+          "company": "PT Astra International Tbk",
+          "role": "Mobile Application Developer",
+          "period": "June 2022 - Present (3 years 10 months)",
+          "location": "Jakarta Raya, Indonesia",
+          "achievements": []
+        },
+        {
+          "company": "Ezeelink Indonesia",
+          "role": "iOS App Developer",
+          "period": "December 2021 - June 2022 (7 months)",
+          "location": "Jakarta, Indonesia",
+          "achievements": [
+            "Led bug fixing and feature enhancements for iOS applications using Swift, ensuring optimal performance and user satisfaction.",
+            "Collaborated closely with the Product Team to align on app functionalities and implement effective solutions."
+          ]
+        },
+        {
+          "company": "Ezeelink Indonesia",
+          "role": "Android Developer",
+          "period": "October 2020 - November 2021 (1 year 2 months)",
+          "location": "Jakarta, Jakarta Raya, Indonesia",
+          "achievements": [
+            "Maintained and enhanced features for a P2P fintech mobile application on Android using Kotlin, improving functionality and user engagement.",
+            "Addressed and resolved critical issues to ensure app reliability and performance."
+          ]
+        },
+        {
+          "company": "Ezeelink Indonesia",
+          "role": "Software Engineer",
+          "period": "February 2020 - October 2020 (9 months)",
+          "location": "Jakarta",
+          "achievements": []
+        }
+      ]
+    },
+    "cta": {
+      "id": "cta",
+      "title": "Ready to build your next flagship Android app?",
+      "subtitle": "I am currently available for senior-level opportunities and architectural consulting in Jakarta or Remotely.",
+      "primaryCtaLabel": "Hire Me",
+      "primaryCtaHref": "mailto:yoriworks@gmail.com?subject=Inquiry%20for%20Senior%20Android%20Developer",
+      "secondaryCtaLabel": "Connect on LinkedIn",
+      "secondaryCtaHref": "https://linkedin.com/in/yorigum"
+    }
   },
-  "hero": {
-    "badge": "⚠️ UNDER DEVELOPMENT",
-    "headline": "Code that Scales,\nSound that Resonates",
-    "subtitle": "I'm Yohanes Rizky Gumilir — a Senior Android Developer specializing in Kotlin & Jetpack Compose, and a passionate Music Producer.",
-    "primaryCtaLabel": "View Projects",
-    "primaryCtaHref": "#portfolio",
-    "secondaryCtaLabel": "Listen to Tracks",
-    "secondaryCtaHref": "#featured",
-    "stats": [
-      {
-        "label": "Years Experience",
-        "value": "5+"
-      },
-      {
-        "label": "Apps Shipped",
-        "value": "5+"
-      },
-      {
-        "label": "Tracks Produced",
-        "value": "20+"
-      }
-    ]
-  },
-  "features": {
-    "id": "services",
-    "title": "Services built for speed & taste",
-    "subtitle": "I bring a unique blend of technical expertise and artistic vision to every project.",
-    "items": [
-      {
-        "title": "Android Development",
-        "description": "Building high-performance, scalable Android apps using Kotlin, Jetpack Compose, Coroutines, Flow, and Clean Architecture.",
-        "icon": "mobile"
-      },
-      {
-        "title": "Music Production",
-        "description": "Professional music production, film scoring, audio engineering, and sample pack creation using Cubase Pro.",
-        "icon": "audio"
-      },
-      {
-        "title": "Creative Synergy",
-        "description": "Bridging engineering precision and artistic intuition — from UI/UX design to cinematic sound design.",
-        "icon": "synergy"
-      }
-    ]
-  },
-  "howItWorks": {
-    "title": "How it works",
-    "subtitle": "My process for turning ideas into reality, whether it's code or music.",
-    "steps": [
-      {
-        "title": "Ideation",
-        "body": "Analyzing user needs, defining architecture, or discovering the right musical direction and emotional tone for the project."
-      },
-      {
-        "title": "Development",
-        "body": "Writing clean, testable Kotlin code with Jetpack Compose and modern Android patterns — or arranging and sound-designing in Cubase Pro."
-      },
-      {
-        "title": "Delivery",
-        "body": "Deploying polished apps to Google Play Store or delivering final mastered audio stems ready for release."
-      }
-    ]
-  },
-  "testimonials": {
-    "title": "Testimonials",
-    "subtitle": "Here is what people say about working with me.",
-    "items": [
-      {
-        "label": "Professional",
-        "name": "Jane Doe",
-        "quote": "An absolute pleasure to work with. Delivered the Android app on time and way beyond our expectations."
-      },
-      {
-        "label": "Creative",
-        "name": "John Smith",
-        "quote": "The sample packs are a game changer. Super clean audio and extremely creative sound design."
-      },
-      {
-        "label": "Community",
-        "name": "Alex Johnson",
-        "quote": "Bridging the gap between engineering and art is hard, but this portfolio does it effortlessly."
-      }
-    ]
-  },
-  "portfolio": {
-    "title": "Portfolio",
-    "subtitle": "A selection of my best Android applications and side projects.",
-    "projects": [
-      {
-        "title": "FitTrack — Fitness Tracker App",
-        "description": "A Jetpack Compose Android app for fitness tracking with real-time activity logging, step counter, and health statistics dashboard.",
-        "href": "#",
-        "image": "https://images.pexels.com/photos/6298479/pexels-photo-6298479.jpeg"
-      },
-      {
-        "title": "ShopFlow — E-Commerce Platform",
-        "description": "E-commerce Android app with complex Compose UI, GraphQL integration, cart management, and optimized product lists.",
-        "href": "#",
-        "image": "https://images.pexels.com/photos/230544/pexels-photo-230544.jpeg"
-      },
-      {
-        "title": "SocialPulse — Social Media Dashboard",
-        "description": "Social media analytics dashboard integrating multiple REST APIs, real-time data streaming with Kotlin Flow, and interactive charts.",
-        "href": "#",
-        "image": "https://images.pexels.com/photos/97080/pexels-photo-97080.jpeg"
-      }
-    ]
-  },
-  "studio": {
-    "title": "Studio",
-    "subtitle": "Explore my latest music productions, film scores, and sample packs.",
-    "items": [
-      {
-        "title": "Cinematic & Film Scoring",
-        "body": "Original orchestral and cinematic compositions for film and media projects, crafted with layered textures and dynamic arrangements.",
-        "href": "#",
-        "image": "https://images.pexels.com/photos/6577455/pexels-photo-6577455.jpeg"
-      },
-      {
-        "title": "Synth & Sample Packs",
-        "body": "Curated royalty-free synthesizer and cinematic sample packs for modern music producers, built with vintage and modern synths.",
-        "href": "#",
-        "image": "https://images.pexels.com/photos/6715455/pexels-photo-6715455.jpeg"
-      }
-    ]
-  },
-  "cta": {
-    "id": "cta",
-    "title": "Ready to build your next app or track? Let's collaborate!",
-    "subtitle": "Available for remote and hybrid projects from Jakarta, Indonesia. Let's craft something amazing together.",
-    "primaryCtaLabel": "Hire Me",
-    "primaryCtaHref": "mailto:yoriworks@gmail.com?subject=Project%20Inquiry%20-%20Portfolio",
-    "secondaryCtaLabel": "Connect on LinkedIn",
-    "secondaryCtaHref": "https://linkedin.com/in/yorigum"
+  "id": {
+    "meta": {
+      "name": "Yohanes Rizky Gumilir",
+      "handle": "Yoriworks",
+      "email": "yoriworks@gmail.com",
+      "linkedin": "https://linkedin.com/in/yorigum",
+      "website": "https://yorigum.xyz",
+      "location": "Jakarta, Indonesia"
+    },
+    "hero": {
+      "badge": "🚀 DALAM PENGEMBANGAN",
+      "headline": "Arsitektur Skalabel,\nPengalaman Mobile Mulus",
+      "subtitle": "Saya Yohanes Rizky — Pengembang Android Senior dengan spesialisasi Kotlin, Jetpack Compose, dan Arsitektur Mobile tingkat Enterprise.",
+      "primaryCtaLabel": "Lihat Stack Teknologi",
+      "primaryCtaHref": "#services",
+      "secondaryCtaLabel": "Lihat Portofolio",
+      "secondaryCtaHref": "#portfolio",
+      "stats": [
+        {
+          "label": "Tahun Pengalaman",
+          "value": "5+"
+        },
+        {
+          "label": "Aplikasi Dirilis",
+          "value": "10+"
+        },
+        {
+          "label": "PR Direview",
+          "value": "200+"
+        }
+      ]
+    },
+    "features": {
+      "id": "services",
+      "title": "Dibangun untuk Performa & Skalabilitas",
+      "subtitle": "Saya fokus pada penulisan kode yang bersih, mudah dikelola dan mendorong pertumbuhan bisnis.",
+      "items": [
+        {
+          "title": "Stack Android Modern",
+          "description": "Implementasi tingkat ahli untuk Kotlin, Jetpack Compose, Coroutines, dan Flow untuk UI berkinerja tinggi dan manajemen status.",
+          "icon": "code"
+        },
+        {
+          "title": "Arsitektur & Clean Code",
+          "description": "Mengimplementasikan pola MVVM/MVI dan Clean Architecture untuk memastikan kode dapat diuji, modular, dan mudah diskalakan.",
+          "icon": "layers"
+        },
+        {
+          "title": "Integrasi Backend",
+          "description": "Integrasi mulus dengan Firebase/Firestore, REST API, dan GraphQL.",
+          "icon": "cloud"
+        }
+      ]
+    },
+    "howItWorks": {
+      "title": "Proses Pengembangan Saya",
+      "subtitle": "Mengubah persyaratan bisnis yang kompleks menjadi solusi mobile yang elegan.",
+      "steps": [
+        {
+          "title": "Desain Arsitektur",
+          "body": "Mendefinisikan aliran data, injeksi dependensi (Hilt/Koin), dan struktur modular sebelum menulis kode."
+        },
+        {
+          "title": "Pengembangan Teritegrasi",
+          "body": "Membangun fitur dengan Jetpack Compose memastikan UI yang konsisten dan performa tinggi."
+        },
+        {
+          "title": "Pengujian & CI/CD",
+          "body": "Menulis pengujian Unit dan Instrumen serta mengotomatisasi deployment."
+        }
+      ]
+    },
+    "testimonials": {
+      "title": "Ulasan Profesional",
+      "subtitle": "Apa kata rekan kerja tentang kontribusi teknis saya.",
+      "items": [
+        {
+          "label": "Technical Excellence",
+          "name": "Engineering Lead",
+          "quote": "Yohanes has an incredible eye for clean architecture. His transition to Jetpack Compose significantly reduced our codebase complexity."
+        },
+        {
+          "label": "Reliability",
+          "name": "Project Manager",
+          "quote": "One of the most dependable developers I've worked with. He consistently delivers high-quality features ahead of schedule."
+        },
+        {
+          "label": "Mentorship",
+          "name": "Junior Developer",
+          "quote": "His code reviews are insightful and have helped the entire team improve our Kotlin standards and testing practices."
+        }
+      ]
+    },
+    "portfolio": {
+      "title": "Pilihan Proyek",
+      "subtitle": "Melihat aplikasi enterprise dan khusus yang pernah saya kerjakan.",
+      "projects": [
+        {
+          "title": "Porta Sancta Journey",
+          "description": "A high-traffic pilgrimage app built with Kotlin and Firestore, featuring offline-first capabilities and real-time location tracking.",
+          "href": "#",
+          "image": "https://images.pexels.com/photos/3729557/pexels-photo-3729557.jpeg"
+        },
+        {
+          "title": "Astra Enterprise Ecosystem",
+          "description": "Core module development for Astra’s internal mobile suite, focusing on modularization and reducing build times by 30%.",
+          "href": "#",
+          "image": "https://images.pexels.com/photos/1181244/pexels-photo-1181244.jpeg"
+        },
+        {
+          "title": "Clean Architecture Template",
+          "description": "A refined open-source starter kit for Jetpack Compose apps utilizing MVI, Hilt, and Coroutines Flow.",
+          "href": "https://github.com/yorigum",
+          "image": "https://images.pexels.com/photos/1779487/pexels-photo-1779487.jpeg"
+        }
+      ]
+    },
+    "studio": {
+      "title": "Kontribusi Open Source",
+      "subtitle": "Memberikan kembali kepada komunitas Android.",
+      "items": [
+        {
+          "title": "Unlocking Productive Potential with Comet",
+          "body": "Unlocking Productive Potential with Comet: Inside My Favorite AI-Powered Research & Productivity Tool. A Developer\u2019s D...",
+          "href": "https://medium.com/@yohanesrizky/unlocking-productive-potential-with-comet-inside-my-favorite-ai-powered-research-productivity-1dcc1b3aa809",
+          "image": "https://cdn-images-1.medium.com/max/1024/0*zFbje3Is0nrEcwiJ"
+        },
+        {
+          "title": "Why Sound is the Soul of Your Creative Project",
+          "body": "Photo by Matthew Moloney on UnsplashIn today\u2019s content-saturated digital age \u2014 from captivating podcasts to viral YouTub...",
+          "href": "https://medium.com/@yohanesrizky/why-sound-is-the-soul-of-your-creative-project-and-how-to-get-it-perfect-ec9c76e0ce03",
+          "image": "https://cdn-images-1.medium.com/max/1024/0*uRacI-6cGKWJM08x"
+        }
+      ]
+    },
+    "career": {
+      "title": "Linimasa Karir",
+      "subtitle": "Perjalanan profesional saya.",
+      "roles": [
+        {
+          "company": "PT. Astra Graphia Information Technology (AGIT)",
+          "role": "Mobile Developer",
+          "period": "Juni 2022 - Sekarang (3 tahun 10 bulan)",
+          "location": "Jakarta, Jakarta Raya, Indonesia",
+          "achievements": [
+            "Significantly contributed to the Salesman App, a key component of Astra's frontliner mobile solutions, which received an Asian Technology Excellence Award for its impact on operational productivity and customer experience in the automotive sector.",
+            "Developed and refined the user interface for key sections of the Salesman App using Kotlin and Jetpack Compose, focusing on enhancing user experience and contributing to an accelerated development lifecycle for faster feature delivery."
+          ]
+        },
+        {
+          "company": "PT Astra International Tbk",
+          "role": "Mobile Application Developer",
+          "period": "Juni 2022 - Sekarang (3 tahun 10 bulan)",
+          "location": "Jakarta Raya, Indonesia",
+          "achievements": []
+        },
+        {
+          "company": "Ezeelink Indonesia",
+          "role": "iOS App Developer",
+          "period": "Desember 2021 - Juni 2022 (7 bulan)",
+          "location": "Jakarta, Indonesia",
+          "achievements": [
+            "Led bug fixing and feature enhancements for iOS applications using Swift, ensuring optimal performance and user satisfaction.",
+            "Collaborated closely with the Product Team to align on app functionalities and implement effective solutions."
+          ]
+        },
+        {
+          "company": "Ezeelink Indonesia",
+          "role": "Android Developer",
+          "period": "Oktober 2020 - November 2021 (1 tahun 2 bulan)",
+          "location": "Jakarta, Jakarta Raya, Indonesia",
+          "achievements": [
+            "Maintained and enhanced features for a P2P fintech mobile application on Android using Kotlin, improving functionality and user engagement.",
+            "Addressed and resolved critical issues to ensure app reliability and performance."
+          ]
+        },
+        {
+          "company": "Ezeelink Indonesia",
+          "role": "Software Engineer",
+          "period": "Februari 2020 - Oktober 2020 (9 bulan)",
+          "location": "Jakarta",
+          "achievements": []
+        }
+      ]
+    },
+    "cta": {
+      "id": "cta",
+      "title": "Siap membangun aplikasi Android andalan Anda selanjutnya?",
+      "subtitle": "Saya saat ini tersedia untuk peluang tingkat senior dan konsultasi arsitektur di Jakarta atau Jarak Jauh.",
+      "primaryCtaLabel": "Rekrut Saya",
+      "primaryCtaHref": "mailto:yoriworks@gmail.com?subject=Inquiry%20for%20Senior%20Android%20Developer",
+      "secondaryCtaLabel": "Terhubung di LinkedIn",
+      "secondaryCtaHref": "https://linkedin.com/in/yorigum"
+    }
   }
 }

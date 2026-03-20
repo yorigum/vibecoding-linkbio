@@ -2,7 +2,9 @@
 
 import { Container } from "@/components/layout/Container";
 import { Badge } from "@/components/ui";
+import { BrandLogo } from "@/components/ui/BrandLogo";
 import { FiGithub, FiInstagram, FiLinkedin } from "react-icons/fi";
+import { FaMediumM } from "react-icons/fa";
 
 export interface FooterLink {
   href: string;
@@ -23,7 +25,7 @@ export function Footer({
   className,
   links = [
     { href: "#portfolio", label: "Portfolio" },
-    { href: "#featured", label: "Featured Media" },
+    //  { href: "#featured", label: "Featured Media" },
     { href: "#services", label: "Services" },
   ],
   copyright = "Copyright © 2026",
@@ -33,7 +35,7 @@ export function Footer({
       <Container>
         <div className="grid gap-10 md:grid-cols-3 md:items-start">
           <div>
-            <p className="font-semibold tracking-tight text-primary">YORIGUM</p>
+            <BrandLogo className="h-28 w-auto" />
             <p className="mt-4 text-sm leading-relaxed text-secondary">
               I'm Yohanes Rizky Gumilir — a Senior Android Developer specializing in Kotlin & Jetpack Compose, and a passionate Music Producer.
             </p>
@@ -69,6 +71,7 @@ export function Footer({
                 { label: "LinkedIn", Icon: FiLinkedin, href: "https://www.linkedin.com/in/yorigum/" },
                 { label: "GitHub", Icon: FiGithub, href: "https://github.com/yorigum" },
                 { label: "Instagram", Icon: FiInstagram, href: "https://www.instagram.com/yohanesrizky/" },
+                { label: "Medium", Icon: FaMediumM, href: "https://medium.com/@yohanesrizky" },
               ].map(({ label, Icon, href }) => (
                 <a
                   key={label}
