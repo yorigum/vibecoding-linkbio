@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { Container } from "@/components/layout/Container";
 import { Badge, Button } from "@/components/ui";
 import { motion } from "motion/react";
@@ -19,6 +20,7 @@ export interface HeroProps {
   primaryCtaHref?: string;
   secondaryCtaLabel?: string;
   secondaryCtaHref?: string;
+  image?: string;
   stats?: HeroStat[];
 }
 
@@ -35,6 +37,7 @@ export function Hero({
   primaryCtaHref = "#portfolio",
   secondaryCtaLabel = "Listen to Tracks",
   secondaryCtaHref = "#studio",
+  image = "https://images.pexels.com/photos/834863/pexels-photo-834863.jpeg",
   stats = [],
 }: HeroProps) {
   // We can format the headline to emphasize "Sound" using link colors, as before.
@@ -63,7 +66,7 @@ export function Hero({
         className="pointer-events-none absolute inset-0 -z-10 bg-[linear-gradient(to_right,var(--border-color)_1px,transparent_1px),linear-gradient(to_bottom,var(--border-color)_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)] opacity-20"
       ></div>
 
-      <Container className="relative z-10 flex flex-col items-center text-center">
+      <Container className="relative z-10 grid grid-cols-1 gap-12 lg:grid-cols-2 lg:items-center text-center lg:text-left">
         <motion.div
           initial="hidden"
           animate="visible"
@@ -71,7 +74,7 @@ export function Hero({
             hidden: { opacity: 0 },
             visible: { opacity: 1, transition: { staggerChildren: 0.15 } },
           }}
-          className="flex max-w-3xl flex-col items-center"
+          className="flex flex-col items-center lg:items-start"
         >
           {badge && (
             <motion.div variants={{ hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0 } }}>
@@ -83,21 +86,21 @@ export function Hero({
 
           <motion.h1
             variants={{ hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0 } }}
-            className="text-5xl font-extrabold leading-[1.15] tracking-tight text-primary sm:text-7xl"
+            className="text-5xl font-extrabold leading-[1.15] tracking-tight text-primary sm:text-7xl lg:text-6xl xl:text-7xl"
           >
             {renderHeadline(headline)}
           </motion.h1>
 
           <motion.p
             variants={{ hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0 } }}
-            className="mt-6 max-w-2xl text-lg leading-relaxed text-secondary sm:text-xl"
+            className="mt-6 max-w-xl text-lg leading-relaxed text-secondary sm:text-xl"
           >
             {subtitle}
           </motion.p>
 
           <motion.div
             variants={{ hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0 } }}
-            className="mt-10 flex flex-col sm:flex-row flex-wrap justify-center gap-4"
+            className="mt-10 flex flex-col sm:flex-row flex-wrap justify-center lg:justify-start gap-4"
           >
             <Button href={primaryCtaHref} variant="primary" className="h-12 px-8 text-sm shadow-md transition-shadow hover:shadow-lg">
               {primaryCtaLabel}
@@ -125,6 +128,24 @@ export function Hero({
             </motion.div>
           )}
         </motion.div>
+
+        {image && (
+          <motion.div
+            initial={{ opacity: 0, x: 20 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+            className="relative mx-auto w-full max-w-md lg:max-w-none aspect-square lg:aspect-[4/5] rounded-[2rem] overflow-hidden border border-border/50 bg-card shadow-2xl"
+          >
+            <Image
+              src={image}
+              alt="Profile photo"
+              fill
+              className="object-cover transition-transform duration-700 hover:scale-105"
+              sizes="(max-width: 1024px) 100vw, 50vw"
+              priority
+            />
+          </motion.div>
+        )}
       </Container>
     </section>
   );
