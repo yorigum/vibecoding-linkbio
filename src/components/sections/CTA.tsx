@@ -2,7 +2,7 @@
 
 import { Container } from "@/components/layout/Container";
 import { Button, Input } from "@/components/ui";
-import { Mail } from "lucide-react";
+import { FiMail } from "react-icons/fi";
 import { motion } from "motion/react";
 
 export interface CTAProps {
@@ -60,7 +60,7 @@ export function CTA({
                 <Input
                   placeholder="your@email.com"
                   variant="default"
-                  leadingIcon={Mail}
+                  leadingIcon={FiMail}
                 />
               </div>
             </div>

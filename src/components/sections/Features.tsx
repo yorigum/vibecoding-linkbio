@@ -2,7 +2,7 @@
 
 import { Container } from "@/components/layout/Container";
 import { Card } from "@/components/ui";
-import { AudioLines, Blend, Smartphone } from "lucide-react";
+import { FiHeadphones, FiTarget, FiSmartphone } from "react-icons/fi";
 import { motion } from "motion/react";
 
 export interface FeatureItem {
@@ -22,11 +22,11 @@ export interface FeaturesProps {
 function iconFor(key: FeatureItem["icon"]) {
   switch (key) {
     case "mobile":
-      return Smartphone;
+      return FiSmartphone;
     case "audio":
-      return AudioLines;
+      return FiHeadphones;
     case "synergy":
-      return Blend;
+      return FiTarget;
   }
 }
 

@@ -1,10 +1,12 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { useRouter, usePathname } from "next/navigation";
 import { Button } from "@/components/ui";
 import { Container } from "@/components/layout/Container";
 import { ThemeToggle } from "@/components/ui/ThemeToggle";
-import { Menu, X } from "lucide-react";
+import { BrandLogo } from "@/components/ui/BrandLogo";
+import { FiMenu, FiX } from "react-icons/fi";
 import { motion, AnimatePresence } from "motion/react";
 
 export interface NavbarLink {
@@ -14,10 +16,12 @@ export interface NavbarLink {
 
 export interface NavbarProps {
   className?: string;
-  brand?: string;
+  brand?: React.ReactNode;
   links?: NavbarLink[];
   ctaLabel?: string;
   ctaHref?: string;
+  lang?: "en" | "id";
+  onLangChange?: (lang: "en" | "id") => void;
 }
 
 function cx(...parts: Array<string | false | null | undefined>) {
@@ -26,15 +30,19 @@ function cx(...parts: Array<string | false | null | undefined>) {
 
 export function Navbar({
   className,
-  brand = "YORIGUM",
+  brand = <BrandLogo className="h-32 w-auto" />,
   links = [
     { href: "#portfolio", label: "Portfolio" },
-    { href: "#studio", label: "Studio" },
+    //    { href: "#featured", label: "Featured Media" },
     { href: "#services", label: "Services" },
   ],
   ctaLabel = "Hire Me",
   ctaHref = "#cta",
+  lang = "en",
+  onLangChange,
 }: NavbarProps) {
+  const router = useRouter();
+  const pathname = usePathname();
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
@@ -42,7 +50,7 @@ export function Navbar({
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 20);
     };
-    
+
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
@@ -56,12 +64,31 @@ export function Navbar({
     }
   }, [mobileMenuOpen]);
 
+  const toggleLang = () => {
+    const newLang = lang === "en" ? "id" : "en";
+    
+    // Normalize path for switching
+    // handles /, /en, /id and subpaths
+    const segments = pathname.split("/").filter(Boolean);
+    if (segments[0] === "en" || segments[0] === "id") {
+      segments[0] = newLang;
+    } else {
+      segments.unshift(newLang);
+    }
+    
+    router.push(`/${segments.join("/")}`);
+    
+    if (onLangChange) {
+      onLangChange(newLang);
+    }
+  };
+
   return (
     <nav
       className={cx(
         "sticky top-0 z-50 w-full transition-all duration-300",
         isScrolled
-          ? "border-b border-border/50 bg-page/80 backdrop-blur-md shadow-sm"
+          ? "border-b border-border bg-page/70 backdrop-blur-2xl backdrop-saturate-150"
           : "bg-transparent",
         className
       )}
@@ -96,7 +123,15 @@ export function Navbar({
         </div>
 
         {/* CTA & Theme Toggle (Right - Desktop) */}
-        <div className="hidden md:flex flex-1 items-center justify-end gap-4">
+        <div className="hidden md:flex flex-1 items-center justify-end gap-3">
+          <button
+            onClick={toggleLang}
+            className="flex items-center justify-center rounded-full p-2 text-sm font-medium text-secondary transition hover:bg-hover hover:text-primary focus:outline-none"
+            title="Toggle Language"
+            aria-label="Toggle Language"
+          >
+            {lang === "en" ? "EN" : "ID"}
+          </button>
           <ThemeToggle />
           <Button href={ctaHref} variant="primary" className="shadow-sm">
             {ctaLabel}
@@ -104,15 +139,22 @@ export function Navbar({
         </div>
 
         {/* Mobile controls */}
-        <div className="flex items-center gap-4 md:hidden">
+        <div className="flex items-center gap-2 md:hidden">
+          <button
+            onClick={toggleLang}
+            className="flex items-center justify-center rounded-full p-2 text-sm font-medium text-secondary transition hover:bg-hover hover:text-primary focus:outline-none"
+            aria-label="Toggle Language"
+          >
+            {lang === "en" ? "EN" : "ID"}
+          </button>
           <ThemeToggle />
           <button
             type="button"
-            className="rounded-md p-1 text-secondary transition hover:bg-hover hover:text-primary focus:outline-none"
+            className="rounded-md p-1 ml-2 text-secondary transition hover:bg-hover hover:text-primary focus:outline-none"
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
             aria-label="Toggle menu"
           >
-            {mobileMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+            {mobileMenuOpen ? <FiX className="h-6 w-6" /> : <FiMenu className="h-6 w-6" />}
           </button>
         </div>
       </Container>
@@ -125,7 +167,7 @@ export function Navbar({
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -10 }}
             transition={{ duration: 0.2 }}
-            className="absolute top-full left-0 w-full border-b border-border/50 bg-page/95 backdrop-blur-xl shadow-lg md:hidden"
+            className="absolute top-full left-0 w-full border-b border-border bg-page/80 backdrop-blur-3xl backdrop-saturate-200 shadow-lg md:hidden"
           >
             <div className="flex flex-col px-6 py-6 space-y-5">
               {links.map((l) => (

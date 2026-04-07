@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import type { MouseEventHandler, ReactNode } from "react";
-import { Loader2 } from "lucide-react";
+import { FiLoader } from "react-icons/fi";
 
 export type ButtonVariant = "primary" | "secondary" | "outline" | "ghost" | "link";
 
@@ -30,7 +30,7 @@ function cx(...parts: Array<string | false | null | undefined>) {
 }
 
 const base =
-  "inline-flex items-center justify-center gap-2 rounded-md px-4 py-2 text-xs md:px-5 md:py-2.5 md:text-sm font-semibold " +
+  "inline-flex items-center justify-center gap-2 rounded-full px-4 py-2 text-xs md:px-5 md:py-2.5 md:text-sm font-semibold " +
   "transition will-change-transform " +
   "focus:outline-none focus-visible:ring-2 focus-visible:ring-link/60 focus-visible:ring-offset-2 focus-visible:ring-offset-page " +
   "active:translate-y-px " +
@@ -38,8 +38,8 @@ const base =
 
 const variants: Record<ButtonVariant, string> = {
   primary:
-    "bg-cta text-white " +
-    "hover:brightness-110 active:brightness-95",
+    "bg-cta text-white shadow-sm " +
+    "hover:shadow hover:-translate-y-0.5 active:scale-[0.98]",
   secondary:
     "bg-primary/10 text-primary ring-1 ring-primary/10 " +
     "hover:bg-primary/15 hover:ring-primary/20 active:bg-primary/10",
@@ -71,7 +71,7 @@ export function Button({
   const isDisabled = disabled || loading;
   const content = (
     <>
-      {loading ? <Loader2 className="h-4 w-4 animate-spin" /> : null}
+      {loading ? <FiLoader className="h-4 w-4 animate-spin" /> : null}
       <span className={cx(loading ? "opacity-90" : undefined)}>{children}</span>
     </>
   );

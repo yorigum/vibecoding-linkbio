@@ -6,7 +6,7 @@ import type {
   InputHTMLAttributes,
   ReactNode,
 } from "react";
-import type { LucideIcon } from "lucide-react";
+import type { IconType } from "react-icons";
 
 export type InputVariant = "default" | "ghost";
 
@@ -14,8 +14,8 @@ export interface InputProps
   extends Omit<InputHTMLAttributes<HTMLInputElement>, "className" | "onChange"> {
   className?: string;
   variant?: InputVariant;
-  leadingIcon?: LucideIcon;
-  trailingIcon?: LucideIcon;
+  leadingIcon?: IconType;
+  trailingIcon?: IconType;
   addonLeft?: ReactNode;
   addonRight?: ReactNode;
   error?: string;

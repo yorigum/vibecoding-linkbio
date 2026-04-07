@@ -1,22 +1,19 @@
 # Portfolio: Yohanes — Mobile Dev & Music Producer
 
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
-
----
 
 ## 👤 About Me
-**Yohanes** adalah seorang **Mobile Developer** profesional yang berbasis di Jakarta, dengan spesialisasi pengembangan aplikasi Android menggunakan **Kotlin** dan **Jetpack Compose**. Di luar dunia koding, ia adalah seorang **Music Producer** dan desainer audio yang aktif di platform kreatif.
+**Yohanes** is a professional **Mobile Developer** based in Jakarta, specializing in Android application development using **Kotlin** and **Jetpack Compose**. Outside the world of coding, he is an active **Music Producer** and audio designer on creative platforms.
 
-*   📱 **Mobile Dev:** Berpengalaman dalam membangun arsitektur aplikasi yang scalable (saat ini berkarya di Astra).
-*   🎵 **Music Production:** Produser musik dengan spesialisasi *sample packs* dan *audio scoring* (Fiverr: yohanesrizkyg).
-*   🚀 **Vision:** Menggabungkan presisi logika pemrograman dengan estetika harmoni audio.
+*   📱 **Mobile Dev:** Experienced in building scalable application architectures (currently working at Astra).
+*   🎵 **Music Production:** Music producer specializing in *sample packs* and *audio scoring* (Fiverr: yohanesrizkyg).
+*   🚀 **Vision:** Bridging the precision of programming logic with the aesthetic harmony of audio.
 
 ## 🎯 Project Goals
-Proyek ini dibangun sebagai platform sentral untuk:
-1.  **Professional Showcase:** Menampilkan portfolio teknis pengembangan aplikasi Android.
-2.  **Audio Hub:** Ruang pamer untuk karya produksi musik dan layanan audio dari brand *yoriworks*.
-3.  **Personal Branding:** Memperkuat identitas digital sebagai pengembang yang memiliki sisi kreatif tinggi.
-4.  **Connect:** Mempermudah kolaborasi profesional baik di bidang teknologi maupun musik.
+This project was built as a centralized platform to:
+1.  **Professional Showcase:** Display a technical portfolio of Android application development.
+2.  **Audio Hub:** Serve as a showroom for music production works and audio services from the *yoriworks* brand.
+3.  **Personal Branding:** Strengthen his digital identity as a developer with a high creative aptitude.
+4.  **Connect:** Facilitate professional collaborations seamlessly in both technology and music.
 
 ## 🛠 Tech Stack
 *   **Framework:** Next.js 15+ (App Router)
@@ -24,6 +21,9 @@ Proyek ini dibangun sebagai platform sentral untuk:
 *   **Styling:** Tailwind CSS (Custom Dark Theme)
 *   **Components:** Atomic Architecture (UI, Layout, Sections)
 *   **Icons:** Lucide React
+
+
+---
 
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
