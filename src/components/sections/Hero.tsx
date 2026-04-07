@@ -37,7 +37,7 @@ export function Hero({
   primaryCtaHref = "#portfolio",
   secondaryCtaLabel = "Listen to Tracks",
   secondaryCtaHref = "#studio",
-  image = "https://images.pexels.com/photos/834863/pexels-photo-834863.jpeg",
+  image = "/media/profile_front.png",
   stats = [],
 }: HeroProps) {
   // We can format the headline to emphasize "Sound" using link colors, as before.
@@ -131,19 +131,46 @@ export function Hero({
 
         {image && (
           <motion.div
-            initial={{ opacity: 0, x: 20 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
-            className="relative mx-auto w-full max-w-md lg:max-w-none aspect-square lg:aspect-[4/5] rounded-[2rem] overflow-hidden border border-border/50 bg-card shadow-2xl"
+            initial={{ opacity: 0, scale: 0.8, rotate: -5 }}
+            animate={{ opacity: 1, scale: 1, rotate: 0 }}
+            transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
+            className="relative mx-auto w-full max-w-sm lg:max-w-md group"
           >
-            <Image
-              src={image}
-              alt="Profile photo"
-              fill
-              className="object-cover transition-transform duration-700 hover:scale-105"
-              sizes="(max-width: 1024px) 100vw, 50vw"
-              priority
-            />
+            {/* Dynamic Rotating Blob Glow */}
+            <div className="absolute inset-0 bg-gradient-to-tr from-link/40 via-purple-500/30 to-blue-400/20 rounded-[30%_70%_70%_30%_/_30%_30%_70%_70%] blur-3xl animate-[spin_10s_linear_infinite] opacity-40 -z-10 group-hover:opacity-60 transition-opacity" />
+
+            {/* Organic Blob Frame - Smaller footprint */}
+            <div className="relative aspect-square w-full sm:w-[350px] lg:w-full mx-auto overflow-hidden 
+                            border-2 border-white/10 shadow-2xl backdrop-blur-[20px] bg-black/5
+                            rounded-[60%_40%_30%_70%_/_60%_30%_70%_40%] 
+                            animate-[blob_15s_ease-in-out_infinite]
+                            group-hover:rounded-[40%_60%_70%_30%_/_40%_40%_60%_60%] transition-[border-radius] duration-1000">
+              
+              {/* Background Image (Locked Black & White / Grayscale) - Fills the entire frame */}
+              <div className="absolute inset-0 grayscale brightness-75 opacity-40 blur-[1px] scale-115 group-hover:scale-125 -translate-y-8 group-hover:-translate-y-12 transition-all duration-1000">
+                <Image
+                  src="/media/profile.JPG"
+                  alt=""
+                  fill
+                  className="object-cover object-top"
+                />
+              </div>
+
+              {/* Main Profile Image (profile_front.png) - Fills the entire frame */}
+              {/* Starts grayscale, turns color on hover */}
+              <Image
+                src={image}
+                alt="Profile photo"
+                fill
+                className="relative z-10 object-cover object-top scale-115 -translate-y-8 grayscale group-hover:grayscale-0 group-hover:scale-120 group-hover:-translate-y-12 transition-all duration-700 ease-out"
+                sizes="(max-width: 1024px) 100vw, 400px"
+                priority
+              />
+            </div>
+
+            {/* Floating Accents */}
+            <div className="absolute -top-6 -right-6 h-20 w-20 bg-link/20 rounded-full blur-xl animate-pulse" />
+            <div className="absolute -bottom-10 -left-6 h-32 w-32 bg-purple-500/10 rounded-full blur-2xl animate-pulse" />
           </motion.div>
         )}
       </Container>
