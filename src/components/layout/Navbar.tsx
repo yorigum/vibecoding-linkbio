@@ -32,12 +32,11 @@ export function Navbar({
   className,
   brand = <BrandLogo className="h-32 w-auto" />,
   links = [
+    { href: "#stack", label: "Tech Stack" },
     { href: "#portfolio", label: "Portfolio" },
-    //    { href: "#featured", label: "Featured Media" },
-    { href: "#services", label: "Services" },
   ],
   ctaLabel = "Hire Me",
-  ctaHref = "#cta",
+  ctaHref = "#stack",
   lang = "en",
   onLangChange,
 }: NavbarProps) {
@@ -66,7 +65,7 @@ export function Navbar({
 
   const toggleLang = () => {
     const newLang = lang === "en" ? "id" : "en";
-    
+
     // Normalize path for switching
     // handles /, /en, /id and subpaths
     const segments = pathname.split("/").filter(Boolean);
@@ -75,9 +74,9 @@ export function Navbar({
     } else {
       segments.unshift(newLang);
     }
-    
+
     router.push(`/${segments.join("/")}`);
-    
+
     if (onLangChange) {
       onLangChange(newLang);
     }

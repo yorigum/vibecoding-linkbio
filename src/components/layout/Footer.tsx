@@ -37,7 +37,7 @@ export function Footer({
           <div>
             <BrandLogo className="h-28 w-auto" />
             <address className="mt-4 not-italic text-sm leading-relaxed text-secondary">
-              I'm Yohanes Rizky Gumilir — a Android Developer specializing in Kotlin & Jetpack Compose, and a passionate Music Producer.
+              I'm Yohanes Rizky Gumilir — an Android Developer specializing in Kotlin & Jetpack Compose, and a passionate Music Producer.
               <br />
               <span className="mt-2 block">Jakarta, Indonesia • yoriworks@gmail.com</span>
             </address>

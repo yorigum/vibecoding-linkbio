@@ -32,7 +32,7 @@ export function Hero({
   className,
   badge = "⚠️ UNDER DEVELOPMENT",
   headline = "Code that Scales,\nSound that Resonates",
-  subtitle = "I'm Yohanes Rizky Gumilir — a Android Developer specializing in Kotlin & Jetpack Compose, and a passionate Music Producer.",
+  subtitle = "I'm Yohanes Rizky Gumilir — an Android Developer specializing in Kotlin & Jetpack Compose, and a passionate Music Producer.",
   primaryCtaLabel = "View Projects",
   primaryCtaHref = "#portfolio",
   secondaryCtaLabel = "Listen to Tracks",
@@ -145,7 +145,7 @@ export function Hero({
                             rounded-[60%_40%_30%_70%_/_60%_30%_70%_40%] 
                             animate-[blob_15s_ease-in-out_infinite]
                             group-hover:rounded-[40%_60%_70%_30%_/_40%_40%_60%_60%] transition-[border-radius] duration-1000">
-              
+
               {/* Background Image (Locked Black & White / Grayscale) - Fills the entire frame */}
               <div className="absolute inset-0 grayscale brightness-75 opacity-40 blur-[1px] scale-115 group-hover:scale-125 -translate-y-8 group-hover:-translate-y-12 transition-all duration-1000">
                 <Image

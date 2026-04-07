@@ -8,6 +8,7 @@ import { Navbar } from "@/components/layout/Navbar";
 import { CTA } from "@/components/sections/CTA";
 import { Features } from "@/components/sections/Features";
 import { Hero } from "@/components/sections/Hero";
+import { TechStack } from "@/components/sections/TechStack";
 
 import allPageData from "@/data/pageContent.json";
 
@@ -30,7 +31,7 @@ function focusRing() {
 // ... focusRing() unchanged
 export function InteractivePage({ initialLang = "en" }: { initialLang?: "en" | "id" }) {
   const [lang, setLang] = useState<"en" | "id">(initialLang);
-  const [mediumArticles, setMediumArticles] = useState<{title: string, body: string, href: string, image: string}[] | null>(null);
+  const [mediumArticles, setMediumArticles] = useState<{ title: string, body: string, href: string, image: string }[] | null>(null);
   const [visibleCount, setVisibleCount] = useState(3);
   const scrollRef = useRef<HTMLDivElement>(null);
   const pageData = (allPageData as any)[lang];
@@ -57,11 +58,11 @@ export function InteractivePage({ initialLang = "en" }: { initialLang?: "en" | "
   useEffect(() => {
     async function fetchMedium() {
       try {
-        const res = await fetch("https://api.rss2json.com/v1/api.json?rss_url=https://medium.com/feed/@yohanesrizky");
+        const res = await fetch(`https://api.rss2json.com/v1/api.json?rss_url=https://medium.com/feed/@yohanesrizky&t=${Date.now()}`);
         if (res.ok) {
           const data = await res.json();
           if (data.status === "ok" && data.items) {
-            const relevantKeywords = ["android", "development", "developer", "kotlin", "jetpack", "architecture", "mobile"];
+            const relevantKeywords = ["android", "development", "developer", "kotlin", "jetpack", "architecture", "mobile", "vibecoding", "coding", "senior", "vibe coding"];
             const filtered = data.items.filter((item: any) => {
               if (!item.categories || item.categories.length === 0) return true;
               return item.categories.some((cat: string) => relevantKeywords.includes(cat.toLowerCase()));
@@ -109,6 +110,7 @@ export function InteractivePage({ initialLang = "en" }: { initialLang?: "en" | "
       <Navbar lang={lang} onLangChange={setLang} ctaLabel={pageData.hero.primaryCtaLabel} />
       <main id="main-content">
         <Hero {...pageData.hero} badge={undefined} stats={undefined} />
+        <TechStack id="stack" />
         <Features {...pageData.features as any} />
 
         <section className="py-12 sm:py-16">
@@ -315,9 +317,9 @@ export function InteractivePage({ initialLang = "en" }: { initialLang?: "en" | "
               </div>
             </header>
 
-            <div 
+            <div
               ref={scrollRef}
-              className="mt-12 flex gap-6 overflow-x-auto pb-8 snap-x snap-mandatory [&::-webkit-scrollbar]:hidden [-ms-overflow-style:'none'] [scrollbar-width:'none']" 
+              className="mt-12 flex gap-6 overflow-x-auto pb-8 snap-x snap-mandatory [&::-webkit-scrollbar]:hidden [-ms-overflow-style:'none'] [scrollbar-width:'none']"
             >
               {activeArticles.slice(0, visibleCount).map((x: any, idx: number) => (
                 <a
