@@ -1,31 +1,36 @@
-# Portfolio: Yohanes — Mobile Dev & Music Producer
+# Portfolio: Yohanes — Senior Android Developer & Music Producer
 
+A premium personal portfolio website built with modern editorial aesthetics, showcasing technical mastery in Android development and creative excellence in music production.
 
 ## 👤 About Me
-**Yohanes** is a professional **Mobile Developer** based in Jakarta, specializing in Android application development using **Kotlin** and **Jetpack Compose**. Outside the world of coding, he is an active **Music Producer** and audio designer on creative platforms.
+**Yohanes** is a professional **Senior Android Developer** based in Jakarta, specializing in building high-scale mobile architectures with **Kotlin**, **Jetpack Compose**, and **Clean Architecture**. Beyond code, he is a passionate **Music Producer** and sound designer under the *yoriworks* brand.
 
-*   📱 **Mobile Dev:** Experienced in building scalable application architectures (currently working at Astra).
-*   🎵 **Music Production:** Music producer specializing in *sample packs* and *audio scoring* (Fiverr: yohanesrizkyg).
-*   🚀 **Vision:** Bridging the precision of programming logic with the aesthetic harmony of audio.
+*   📱 **Mobile Dev:** Specialist in Modern Android Tech Stack (currently at Astra Graphia).
+*   🎵 **Music Production:** Expert in sample packs and professional audio scoring.
+*   🚀 **Philosophy:** Engineering scalable logic while resonating creative harmony.
 
-## 🎯 Project Goals
-This project was built as a centralized platform to:
-1.  **Professional Showcase:** Display a technical portfolio of Android application development.
-2.  **Audio Hub:** Serve as a showroom for music production works and audio services from the *yoriworks* brand.
-3.  **Personal Branding:** Strengthen his digital identity as a developer with a high creative aptitude.
-4.  **Connect:** Facilitate professional collaborations seamlessly in both technology and music.
+## ✨ Key Features
+- **Modern Hero Section:** 3D-styled interactive portrait with an organic "Blob" cutout effect and B&W to color hover transitions.
+- **Bento Box Tech Stack:** Organized grid showcasing Android technologies (Kotlin, Compose, Room, Hilt/Koin), professional tools (Figma, Jira), and powerful workspace hardware.
+- **Dynamic Medium Integration:** Automated RSS feed with cache-busting to display the latest technical articles directly on the site.
+- **Smart CTA:** Integrated inquiry system that facilitates direct professional connections via email and LinkedIn.
+- **Multilingual Support:** Fully bilingual profile supported in English and Bahasa Indonesia.
 
-## 🛠 Tech Stack
-*   **Framework:** Next.js 15+ (App Router)
-*   **Language:** TypeScript
-*   **Styling:** Tailwind CSS (Custom Dark Theme)
-*   **Components:** Atomic Architecture (UI, Layout, Sections)
-*   **Icons:** Lucide React
+## 🛠 Tech Stack & Architecture
+- **Framework:** Next.js 15+ (App Router)
+- **Engine:** TypeScript & Framer Motion (for premium animations)
+- **Styling:** Tailwind CSS (Custom Apple-inspired Editorial Design)
+- **Components:** Functional Atomic Design (UI, Layout, Sections)
+- **Icons:** React Icons (Si, Fi, Lu)
+- **Patterns:** Server-side data fetching & Hybrid Client-Side Interactivity
 
+## 📱 Mobile Architecture Goals
+This project mirrors the high standards of mobile app engineering:
+1. **Clean Architecture:** Separation of concerns between UI, Logic, and Data.
+2. **Performance:** Optimized image loading and layout shifts (Lighthouse focused).
+3. **Responsive UI:** Adaptive layouts that feel like a native mobile app on handheld devices.
 
 ---
-
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
 ## Getting Started
 
@@ -33,31 +38,12 @@ First, run the development server:
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
 ## Deploy on Vercel
+The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new).
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+---
+*Built with passion by Yohanes.*

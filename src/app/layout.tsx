@@ -41,7 +41,7 @@ export const metadata: Metadata = {
     siteName: "Yohanes Rizky Gumilir",
     title: "Yohanes Rizky Gumilir | Android Developer",
     description:
-      "Explore the portfolio of Yohanes Rizky Gumilir, a Android Developer and Music Producer specializing in scalable mobile architecture.",
+      "Explore the portfolio of Yohanes Rizky Gumilir, an Android Developer and Music Producer specializing in scalable mobile architecture.",
     images: [
       {
         url: "/media/brand_yorigum.svg",
