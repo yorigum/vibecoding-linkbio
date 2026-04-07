@@ -17,11 +17,11 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   metadataBase: new URL("https://yorigum.xyz"),
   title: {
-    default: "Yohanes Rizky Gumilir | Senior Android Developer & Music Producer",
+    default: "Yohanes Rizky Gumilir | Android Developer & Music Producer",
     template: "%s | Yohanes Rizky Gumilir",
   },
   description:
-    "Senior Android Developer specializing in Kotlin, Jetpack Compose, and Enterprise Mobile Architecture. 5+ years shipping high-performance apps. Passionate Music Producer based in Jakarta.",
+    "Android Developer specializing in Kotlin, Jetpack Compose, and Enterprise Mobile Architecture. 5+ years shipping high-performance apps. Passionate Music Producer based in Jakarta.",
   keywords: [
     "Yohanes Rizky Gumilir",
     "Android Developer",
@@ -39,9 +39,9 @@ export const metadata: Metadata = {
     locale: "en_US",
     url: "https://yorigum.xyz",
     siteName: "Yohanes Rizky Gumilir",
-    title: "Yohanes Rizky Gumilir | Senior Android Developer",
+    title: "Yohanes Rizky Gumilir | Android Developer",
     description:
-      "Explore the portfolio of Yohanes Rizky Gumilir, a Senior Android Developer and Music Producer specializing in scalable mobile architecture.",
+      "Explore the portfolio of Yohanes Rizky Gumilir, a Android Developer and Music Producer specializing in scalable mobile architecture.",
     images: [
       {
         url: "/media/brand_yorigum.svg",
@@ -53,7 +53,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Yohanes Rizky Gumilir | Senior Android Developer",
+    title: "Yohanes Rizky Gumilir | Android Developer",
     description: "Building scalable mobile experiences and resonant sound designs.",
     images: ["/media/brand_yorigum.svg"],
     creator: "@yorigum",

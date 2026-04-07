@@ -39,7 +39,7 @@ export default async function Page({ params }: { params: Promise<{ lang: string 
     "name": data.meta.name,
     "url": data.meta.website,
     "email": data.meta.email,
-    "jobTitle": validatedLang === "en" ? "Senior Android Developer" : "Pengembang Android Senior",
+    "jobTitle": validatedLang === "en" ? "Android Developer" : "Pengembang Android Senior",
     "sameAs": [
       data.meta.linkedin,
       "https://github.com/yorigum",
