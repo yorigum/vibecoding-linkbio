@@ -42,7 +42,7 @@ export default function NotFound() {
 
       <footer className="mt-20 border-t border-border/20 pt-8 w-full max-w-xs opacity-50">
         <p className="text-xs text-secondary tracking-widest uppercase">
-          Yohanes Rizky Gumilir • Senior Android Developer
+          Yohanes Rizky Gumilir • Android Developer
         </p>
       </footer>
     </div>
