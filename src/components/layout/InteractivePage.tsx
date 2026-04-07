@@ -108,10 +108,10 @@ export function InteractivePage({ initialLang = "en" }: { initialLang?: "en" | "
 
       <Navbar lang={lang} onLangChange={setLang} ctaLabel={pageData.hero.primaryCtaLabel} />
       <main id="main-content">
-        <Hero {...pageData.hero} />
+        <Hero {...pageData.hero} badge={undefined} stats={undefined} />
         <Features {...pageData.features as any} />
 
-        <section className="py-16 sm:py-24">
+        <section className="py-12 sm:py-16">
           <div className="mx-auto max-w-6xl px-4 sm:px-6">
             <header className="max-w-2xl">
               <h2 className="text-3xl font-bold tracking-tight sm:text-4xl text-primary">
@@ -147,6 +147,7 @@ export function InteractivePage({ initialLang = "en" }: { initialLang?: "en" | "
           </div>
         </section>
 
+        {/*
         <section className="py-16 sm:py-24">
           <div className="mx-auto max-w-6xl px-4 sm:px-6">
             <header className="max-w-2xl">
@@ -181,8 +182,9 @@ export function InteractivePage({ initialLang = "en" }: { initialLang?: "en" | "
             </div>
           </div>
         </section>
+        */}
 
-        <article id="career" className="py-16 sm:py-24">
+        <article id="career" className="py-12 sm:py-16">
           <div className="mx-auto max-w-6xl px-4 sm:px-6">
             <header className="max-w-2xl mb-12">
               <h2 className="text-3xl font-bold tracking-tight sm:text-4xl text-primary">
@@ -234,7 +236,7 @@ export function InteractivePage({ initialLang = "en" }: { initialLang?: "en" | "
 
         <CTA {...pageData.cta} />
 
-        <article id="portfolio" className="py-16 sm:py-24">
+        <article id="portfolio" className="py-12 sm:py-16">
           <div className="mx-auto max-w-6xl px-4 sm:px-6">
             <header className="max-w-2xl">
               <h2 className="text-3xl font-bold tracking-tight sm:text-4xl text-primary">
@@ -284,7 +286,7 @@ export function InteractivePage({ initialLang = "en" }: { initialLang?: "en" | "
           </div>
         </article>
 
-        <section id="studio" className="py-16 sm:py-24" >
+        <section id="studio" className="py-12 sm:py-16" >
           <div className="mx-auto max-w-6xl px-4 sm:px-6">
             <header className="flex flex-col sm:flex-row sm:items-end justify-between gap-6 max-w-6xl">
               <div className="max-w-2xl">

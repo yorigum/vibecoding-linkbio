@@ -30,7 +30,7 @@ export function Hero({
   className,
   badge = "⚠️ UNDER DEVELOPMENT",
   headline = "Code that Scales,\nSound that Resonates",
-  subtitle = "I'm Yohanes Rizky Gumilir — a Senior Android Developer specializing in Kotlin & Jetpack Compose, and a passionate Music Producer.",
+  subtitle = "I'm Yohanes Rizky Gumilir — a Android Developer specializing in Kotlin & Jetpack Compose, and a passionate Music Producer.",
   primaryCtaLabel = "View Projects",
   primaryCtaHref = "#portfolio",
   secondaryCtaLabel = "Listen to Tracks",
@@ -56,7 +56,7 @@ export function Hero({
   };
 
   return (
-    <section className={cx("relative overflow-hidden py-20 sm:py-32", className)}>
+    <section className={cx("relative overflow-hidden py-12 sm:py-20", className)}>
       {/* SaaS subtle grid pattern background */}
       <div
         aria-hidden="true"
