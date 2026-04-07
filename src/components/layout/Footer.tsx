@@ -36,9 +36,11 @@ export function Footer({
         <div className="grid gap-10 md:grid-cols-3 md:items-start">
           <div>
             <BrandLogo className="h-28 w-auto" />
-            <p className="mt-4 text-sm leading-relaxed text-secondary">
+            <address className="mt-4 not-italic text-sm leading-relaxed text-secondary">
               I'm Yohanes Rizky Gumilir — a Senior Android Developer specializing in Kotlin & Jetpack Compose, and a passionate Music Producer.
-            </p>
+              <br />
+              <span className="mt-2 block">Jakarta, Indonesia • yoriworks@gmail.com</span>
+            </address>
             <div className="mt-5">
               <Badge variant="outline">Mobile • Music</Badge>
             </div>
@@ -77,7 +79,7 @@ export function Footer({
                   key={label}
                   href={href}
                   target="_blank"
-                  rel="noopener noreferrer"
+                  rel="me noopener noreferrer"
                   aria-label={label}
                   className="grid h-10 w-10 place-items-center rounded-md border border-border/50 bg-primary/5 text-secondary transition hover:border-border hover:bg-primary/10 hover:text-primary focus:outline-none focus-visible:ring-2 focus-visible:ring-link/60 focus-visible:ring-offset-2 focus-visible:ring-offset-page"
                 >

@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { useRouter, usePathname } from "next/navigation";
 import { Button } from "@/components/ui";
 import { Container } from "@/components/layout/Container";
 import { ThemeToggle } from "@/components/ui/ThemeToggle";
@@ -40,6 +41,8 @@ export function Navbar({
   lang = "en",
   onLangChange,
 }: NavbarProps) {
+  const router = useRouter();
+  const pathname = usePathname();
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
@@ -62,8 +65,21 @@ export function Navbar({
   }, [mobileMenuOpen]);
 
   const toggleLang = () => {
+    const newLang = lang === "en" ? "id" : "en";
+    
+    // Normalize path for switching
+    // handles /, /en, /id and subpaths
+    const segments = pathname.split("/").filter(Boolean);
+    if (segments[0] === "en" || segments[0] === "id") {
+      segments[0] = newLang;
+    } else {
+      segments.unshift(newLang);
+    }
+    
+    router.push(`/${segments.join("/")}`);
+    
     if (onLangChange) {
-      onLangChange(lang === "en" ? "id" : "en");
+      onLangChange(newLang);
     }
   };
 
