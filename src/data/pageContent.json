@@ -116,6 +116,19 @@
         }
       ]
     },
+    "devTools": {
+      "id": "devtools",
+      "title": "Developer Tools",
+      "subtitle": "Open-source utilities and tools I've built to solve real-world problems.",
+      "tools": [
+        {
+          "title": "ZEScra",
+          "description": "A comprehensive suite for ESC/POS and ZPL printer language development.",
+          "href": "/tools/zescra",
+          "icon": "printer"
+        }
+      ]
+    },
     "studio": {
       "title": "Open Source & Contributions",
       "subtitle": "Giving back to the Android community through libraries and knowledge sharing.",
@@ -308,6 +321,19 @@
           "description": "A refined open-source starter kit for Jetpack Compose apps utilizing MVI, Hilt, and Coroutines Flow.",
           "href": "https://github.com/yorigum",
           "image": "https://images.pexels.com/photos/1779487/pexels-photo-1779487.jpeg"
+        }
+      ]
+    },
+    "devTools": {
+      "id": "devtools",
+      "title": "Alat Pengembang",
+      "subtitle": "Utilitas dan alat open-source yang saya bangun untuk menyelesaikan masalah nyata.",
+      "tools": [
+        {
+          "title": "ZEScra",
+          "description": "Suite komprehensif untuk pengembangan dan pengujian bahasa printer ESC/POS dan ZPL.",
+          "href": "/tools/zescra",
+          "icon": "printer"
         }
       ]
     },
