@@ -9,6 +9,7 @@ import { CTA } from "@/components/sections/CTA";
 import { Features } from "@/components/sections/Features";
 import { Hero } from "@/components/sections/Hero";
 import { TechStack } from "@/components/sections/TechStack";
+import { DevTools } from "@/components/sections/DevTools";
 
 import allPageData from "@/data/pageContent.json";
 
@@ -287,6 +288,8 @@ export function InteractivePage({ initialLang = "en" }: { initialLang?: "en" | "
             </div>
           </div>
         </article>
+
+        <DevTools {...pageData.devTools} />
 
         <section id="studio" className="py-12 sm:py-16" >
           <div className="mx-auto max-w-6xl px-4 sm:px-6">
