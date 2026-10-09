@@ -1,8 +1,9 @@
-import { useState, useEffect } from "react";
+"use client";
+
 import { Container } from "@/components/layout/Container";
 import { motion } from "motion/react";
 import {
-  SiKotlin, SiJetpackcompose, SiGraphql, SiSqlite, SiPostgresql,
+  SiKotlin, SiJetpackcompose, SiGraphql, SiSqlite,
   SiFigma, SiJira, SiAndroidstudio
 } from "react-icons/si";
 import { LuLayoutTemplate, LuCpu, LuMonitor, LuLaptop, LuShieldCheck } from "react-icons/lu";
@@ -13,14 +14,6 @@ export interface TechStackProps {
 }
 
 export function TechStack({ className, id = "stack" }: TechStackProps) {
-  const [mounted, setMounted] = useState(false);
-
-  useEffect(() => {
-    setMounted(true);
-  }, []);
-
-  if (!mounted) return null;
-
   const categories = [
     {
       title: "Android Stack",
@@ -39,7 +32,7 @@ export function TechStack({ className, id = "stack" }: TechStackProps) {
     {
       title: "Workflow",
       subtitle: "Tools for collaboration and design.",
-      icon: <SiFigma className="w-6 h-6 text-purple-500" />,
+      icon: <SiFigma className="w-6 h-6 text-link" />,
       items: [
         { name: "Figma", icon: <SiFigma /> },
         { name: "Jira", icon: <SiJira /> },
@@ -50,8 +43,8 @@ export function TechStack({ className, id = "stack" }: TechStackProps) {
     },
     {
       title: "Workspace",
-      subtitle: "Mechanical hardware for daily heavy lifting.",
-      icon: <LuMonitor className="w-6 h-6 text-orange-500" />,
+      subtitle: "The hardware I work on every day.",
+      icon: <LuMonitor className="w-6 h-6 text-link" />,
       items: [
         { name: "Legion 5", icon: <LuLaptop /> },
         { name: "Thinkpad", icon: <LuLaptop /> },
@@ -75,19 +68,19 @@ export function TechStack({ className, id = "stack" }: TechStackProps) {
             Tech Stack & Gear
           </h2>
           <p className="mt-4 text-base text-secondary">
-            The precise instruments and technologies I use to engineer premium mobile experiences.
+            The tools and technologies I use to build Android apps.
           </p>
         </motion.header>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          {categories.map((cat, idx) => (
+          {categories.map((cat) => (
             <motion.div
               key={cat.title}
-              initial={{ opacity: 0, scale: 0.95 }}
-              whileInView={{ opacity: 1, scale: 1 }}
+              initial={{ opacity: 0, y: 24 }}
+              whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: idx * 0.1 }}
-              className={`group relative p-8 rounded-[2rem] border border-border bg-card shadow-sm hover:shadow-xl transition-all duration-300 ${cat.className}`}
+              transition={{ duration: 0.6 }}
+              className={`group relative p-8 rounded-[2rem] border border-border bg-card transition-colors duration-300 ${cat.className}`}
             >
               <div className="flex items-start justify-between mb-6">
                 <div>
@@ -103,16 +96,13 @@ export function TechStack({ className, id = "stack" }: TechStackProps) {
                 {cat.items.map((item) => (
                   <div
                     key={item.name}
-                    className="flex items-center gap-2 px-4 py-2 rounded-xl bg-primary/5 border border-border/50 text-sm font-medium text-primary hover:bg-link hover:text-white hover:border-link transition-colors cursor-default"
+                    className="flex items-center gap-2 px-4 py-2 rounded-xl bg-primary/5 border border-border/50 text-sm font-medium text-primary hover:bg-cta hover:text-white hover:border-cta transition-colors cursor-default"
                   >
                     <span className="text-lg opacity-80">{item.icon}</span>
                     {item.name}
                   </div>
                 ))}
               </div>
-
-              {/* Subtle gradient overlay on hover */}
-              <div className="absolute inset-x-0 bottom-0 h-1 bg-gradient-to-r from-link/0 via-link/40 to-link/0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-full" />
             </motion.div>
           ))}
         </div>

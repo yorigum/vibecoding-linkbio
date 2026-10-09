@@ -9,27 +9,12 @@
       "location": "Jakarta, Indonesia"
     },
     "hero": {
-      "badge": "🚀 UNDER DEVELOPMENT",
-      "headline": "Scalable Architecture,\nSeamless Mobile Experiences",
-      "subtitle": "I'm Yohanes Rizky — an Android Developer specializing in Kotlin, Jetpack Compose, and Enterprise-grade Mobile Architecture.",
-      "primaryCtaLabel": "View Tech Stack",
+      "headline": "Scalable Architecture,\nMaintainable Mobile Apps",
+      "subtitle": "I'm Yohanes Rizky, an Android Developer specializing in Kotlin, Jetpack Compose, and enterprise-grade mobile architecture.",
+      "primaryCtaLabel": "See the tech stack",
       "primaryCtaHref": "#services",
-      "secondaryCtaLabel": "See Portfolio",
-      "secondaryCtaHref": "#portfolio",
-      "stats": [
-        {
-          "label": "Years Experience",
-          "value": "5+"
-        },
-        {
-          "label": "Apps Shipped",
-          "value": "10+"
-        },
-        {
-          "label": "PRs Reviewed",
-          "value": "200+"
-        }
-      ]
+      "secondaryCtaLabel": "See selected work",
+      "secondaryCtaHref": "#portfolio"
     },
     "features": {
       "id": "services",
@@ -48,7 +33,7 @@
         },
         {
           "title": "Backend Integration",
-          "description": "Seamless integration with Firebase/Firestore, REST APIs, and GraphQL to power real-time data driven applications.",
+          "description": "Connects Firebase and Firestore, REST APIs, and GraphQL to power real-time data driven applications.",
           "icon": "cloud"
         }
       ]
@@ -68,27 +53,6 @@
         {
           "title": "Testing & CI/CD",
           "body": "Writing Unit and Instrumented tests while automating the deployment pipeline for faster, more reliable releases."
-        }
-      ]
-    },
-    "testimonials": {
-      "title": "Professional Feedback",
-      "subtitle": "What colleagues and stakeholders say about my technical contributions.",
-      "items": [
-        {
-          "label": "Technical Excellence",
-          "name": "Engineering Lead",
-          "quote": "Yohanes has an incredible eye for clean architecture. His transition to Jetpack Compose significantly reduced our codebase complexity."
-        },
-        {
-          "label": "Reliability",
-          "name": "Project Manager",
-          "quote": "One of the most dependable developers I've worked with. He consistently delivers high-quality features ahead of schedule."
-        },
-        {
-          "label": "Mentorship",
-          "name": "Junior Developer",
-          "quote": "His code reviews are insightful and have helped the entire team improve our Kotlin standards and testing practices."
         }
       ]
     },
@@ -199,8 +163,8 @@
     },
     "cta": {
       "id": "cta",
-      "title": "Ready to build your next flagship Android app?",
-      "subtitle": "I am currently available for senior-level opportunities and architectural consulting in Jakarta or Remotely.",
+      "title": "Ready to build your next Android app?",
+      "subtitle": "I am currently available for senior-level opportunities and architectural consulting in Jakarta or remotely.",
       "primaryCtaLabel": "Hire Me",
       "primaryCtaHref": "mailto:yoriworks@gmail.com?subject=Inquiry%20for%20Senior%20Android%20Developer",
       "secondaryCtaLabel": "Connect on LinkedIn",
@@ -217,27 +181,12 @@
       "location": "Jakarta, Indonesia"
     },
     "hero": {
-      "badge": "🚀 DALAM PENGEMBANGAN",
-      "headline": "Arsitektur Skalabel,\nPengalaman Mobile Mulus",
-      "subtitle": "Saya Yohanes Rizky — Pengembang Android Senior dengan spesialisasi Kotlin, Jetpack Compose, dan Arsitektur Mobile tingkat Enterprise.",
-      "primaryCtaLabel": "Lihat Stack Teknologi",
+      "headline": "Arsitektur Skalabel,\nAplikasi Mobile yang Mudah Dirawat",
+      "subtitle": "Saya Yohanes Rizky, Pengembang Android Senior dengan spesialisasi Kotlin, Jetpack Compose, dan arsitektur mobile tingkat enterprise.",
+      "primaryCtaLabel": "Lihat stack teknologi",
       "primaryCtaHref": "#services",
-      "secondaryCtaLabel": "Lihat Portofolio",
-      "secondaryCtaHref": "#portfolio",
-      "stats": [
-        {
-          "label": "Tahun Pengalaman",
-          "value": "5+"
-        },
-        {
-          "label": "Aplikasi Dirilis",
-          "value": "10+"
-        },
-        {
-          "label": "PR Direview",
-          "value": "200+"
-        }
-      ]
+      "secondaryCtaLabel": "Lihat proyek pilihan",
+      "secondaryCtaHref": "#portfolio"
     },
     "features": {
       "id": "services",
@@ -256,7 +205,7 @@
         },
         {
           "title": "Integrasi Backend",
-          "description": "Integrasi mulus dengan Firebase/Firestore, REST API, dan GraphQL.",
+          "description": "Menghubungkan Firebase dan Firestore, REST API, dan GraphQL.",
           "icon": "cloud"
         }
       ]
@@ -276,27 +225,6 @@
         {
           "title": "Pengujian & CI/CD",
           "body": "Menulis pengujian Unit dan Instrumen serta mengotomatisasi deployment."
-        }
-      ]
-    },
-    "testimonials": {
-      "title": "Ulasan Profesional",
-      "subtitle": "Apa kata rekan kerja tentang kontribusi teknis saya.",
-      "items": [
-        {
-          "label": "Technical Excellence",
-          "name": "Engineering Lead",
-          "quote": "Yohanes has an incredible eye for clean architecture. His transition to Jetpack Compose significantly reduced our codebase complexity."
-        },
-        {
-          "label": "Reliability",
-          "name": "Project Manager",
-          "quote": "One of the most dependable developers I've worked with. He consistently delivers high-quality features ahead of schedule."
-        },
-        {
-          "label": "Mentorship",
-          "name": "Junior Developer",
-          "quote": "His code reviews are insightful and have helped the entire team improve our Kotlin standards and testing practices."
         }
       ]
     },
@@ -407,8 +335,8 @@
     },
     "cta": {
       "id": "cta",
-      "title": "Siap membangun aplikasi Android andalan Anda selanjutnya?",
-      "subtitle": "Saya saat ini tersedia untuk peluang tingkat senior dan konsultasi arsitektur di Jakarta atau Jarak Jauh.",
+      "title": "Siap membangun aplikasi Android Anda selanjutnya?",
+      "subtitle": "Saya saat ini tersedia untuk peluang tingkat senior dan konsultasi arsitektur di Jakarta atau jarak jauh.",
       "primaryCtaLabel": "Rekrut Saya",
       "primaryCtaHref": "mailto:yoriworks@gmail.com?subject=Inquiry%20for%20Senior%20Android%20Developer",
       "secondaryCtaLabel": "Terhubung di LinkedIn",

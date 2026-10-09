@@ -1,30 +1,36 @@
-# Portfolio: Yohanes — Senior Android Developer & Music Producer
+# Portfolio: Yohanes, Senior Android Developer and Music Producer
 
-A premium personal portfolio website built with modern editorial aesthetics, showcasing technical mastery in Android development and creative excellence in music production.
+A personal portfolio website showcasing Android development and music production.
 
-## 👤 About Me
-**Yohanes** is a professional **Senior Android Developer** based in Jakarta, specializing in building high-scale mobile architectures with **Kotlin**, **Jetpack Compose**, and **Clean Architecture**. Beyond code, he is a passionate **Music Producer** and sound designer under the *yoriworks* brand.
+## About Me
+**Yohanes** is a professional **Senior Android Developer** based in Jakarta, specializing in building large-scale mobile architectures with **Kotlin**, **Jetpack Compose**, and **Clean Architecture**. Beyond code, he is a passionate **Music Producer** and sound designer under the *yoriworks* brand.
 
-*   📱 **Mobile Dev:** Specialist in Modern Android Tech Stack (currently at Astra Graphia).
-*   🎵 **Music Production:** Expert in sample packs and professional audio scoring.
-*   🚀 **Philosophy:** Engineering scalable logic while resonating creative harmony.
+*   **Mobile Dev:** Specialist in Modern Android Tech Stack (currently at Astra Graphia).
+*   **Music Production:** Sample packs and professional audio scoring.
+*   **Philosophy:** Scalable logic, resonant sound.
 
-## ✨ Key Features
-- **Modern Hero Section:** 3D-styled interactive portrait with an organic "Blob" cutout effect and B&W to color hover transitions.
-- **Bento Box Tech Stack:** Organized grid showcasing Android technologies (Kotlin, Compose, Room, Hilt/Koin), professional tools (Figma, Jira), and powerful workspace hardware.
-- **Dynamic Medium Integration:** Automated RSS feed with cache-busting to display the latest technical articles directly on the site.
-- **Smart CTA:** Integrated inquiry system that facilitates direct professional connections via email and LinkedIn.
-- **Multilingual Support:** Fully bilingual profile supported in English and Bahasa Indonesia.
+## Key Features
+- **Hero Section:** Split editorial hero with real portrait, no grid/gradient decor.
+- **Tech Stack:** Single-accent grid for Android stack, tools, workspace hardware.
+- **Dynamic Medium Integration:** RSS feed with static fallback in `pageContent.json`.
+- **Smart CTA:** Single-intent contact (email form + LinkedIn).
+- **Multilingual Support:** English and Bahasa Indonesia (`/en`, `/id`).
+- **DevTools proxy:** Single `/tools/:path*` rewrite to ZEScra.
 
-## 🛠 Tech Stack & Architecture
-- **Framework:** Next.js 15+ (App Router)
-- **Engine:** TypeScript & Framer Motion (for premium animations)
-- **Styling:** Tailwind CSS (Custom Apple-inspired Editorial Design)
-- **Components:** Functional Atomic Design (UI, Layout, Sections)
-- **Icons:** React Icons (Si, Fi, Lu)
-- **Patterns:** Server-side data fetching & Hybrid Client-Side Interactivity
+## Requirements
+- Node 20+, npm. No new UI deps without checking `package.json`.
+- Design direction lives in `DESIGN.md`. Filter: antislop + taste (`6 / 5 / 4`).
+- Ponytail: shortest diff, delete over add, reuse installed code.
 
-## 📱 Mobile Architecture Goals
+## Tech Stack & Architecture
+- **Framework:** Next.js 16 (App Router)
+- **Engine:** TypeScript & Motion (`motion/react`) for restrained entry reveals
+- **Styling:** Tailwind CSS v4 (Apple-editorial, single accent, see DESIGN.md)
+- **Components:** UI, Layout, Sections (Server-first, isolated client leaves)
+- **Icons:** React Icons (installed only, no new family)
+- **Patterns:** Server data fetching, bilingual `/en /id` routes, RSS fallback
+
+## Mobile Architecture Goals
 This project mirrors the high standards of mobile app engineering:
 1. **Clean Architecture:** Separation of concerns between UI, Logic, and Data.
 2. **Performance:** Optimized image loading and layout shifts (Lighthouse focused).

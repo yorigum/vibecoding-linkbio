@@ -1,14 +1,15 @@
 "use client";
 
 import { Container } from "@/components/layout/Container";
-import { Card } from "@/components/ui";
-import { FiHeadphones, FiTarget, FiSmartphone } from "react-icons/fi";
+import { Card } from "@/components/ui/Card";
+import { FiCode, FiLayers, FiCloud } from "react-icons/fi";
 import { motion } from "motion/react";
+import { cn } from "@/lib/cn";
 
 export interface FeatureItem {
   title: string;
   description: string;
-  icon: "mobile" | "audio" | "synergy";
+  icon: "code" | "layers" | "cloud";
 }
 
 export interface FeaturesProps {
@@ -21,44 +22,42 @@ export interface FeaturesProps {
 
 function iconFor(key: FeatureItem["icon"]) {
   switch (key) {
-    case "mobile":
-      return FiSmartphone;
-    case "audio":
-      return FiHeadphones;
-    case "synergy":
-      return FiTarget;
+    case "code":
+      return FiCode;
+    case "layers":
+      return FiLayers;
+    case "cloud":
+      return FiCloud;
+    default:
+      return FiCode;
   }
-}
-
-function cx(...parts: Array<string | false | null | undefined>) {
-  return parts.filter(Boolean).join(" ");
 }
 
 export function Features({
   className,
   id = "services",
-  title = "Services built for speed & taste",
-  subtitle = "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+  title = "Services built for speed",
+  subtitle = "Clean, maintainable Android code that ships.",
   items = [
     {
-      title: "Mobile Mastery",
-      description: "Building high-performance Android apps.",
-      icon: "mobile",
+      title: "Modern Android Stack",
+      description: "Kotlin, Jetpack Compose, Coroutines and Flow for high-performance UI.",
+      icon: "code",
     },
     {
-      title: "Audio Craft",
-      description: "Professional music production & sample packs.",
-      icon: "audio",
+      title: "Architecture",
+      description: "MVVM/MVI and Clean Architecture that stays testable and modular.",
+      icon: "layers",
     },
     {
-      title: "Creative Synergy",
-      description: "Solving problems with logic and art.",
-      icon: "synergy",
+      title: "Backend Integration",
+      description: "Firebase, REST and GraphQL for real-time data driven apps.",
+      icon: "cloud",
     },
   ],
 }: FeaturesProps) {
   return (
-    <section id={id} className={cx("py-16 sm:py-24", className)}>
+    <section id={id} className={cn("py-16 sm:py-24", className)}>
       <Container>
         <motion.header
           initial={{ opacity: 0, y: 20 }}
@@ -73,23 +72,19 @@ export function Features({
           <p className="mt-4 text-base text-secondary">{subtitle}</p>
         </motion.header>
 
-        <motion.div
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true }}
-          variants={{
-            hidden: { opacity: 0 },
-            visible: { opacity: 1, transition: { staggerChildren: 0.1 } },
-          }}
-          className="mt-12 grid gap-6 md:grid-cols-2 lg:grid-cols-3"
-        >
+        <div className="mt-12 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
           {items.map((item) => {
             const Icon = iconFor(item.icon);
             return (
-              <motion.div key={item.title} variants={{ hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0 } }}>
+              <motion.div
+                key={item.title}
+                initial={{ opacity: 0, y: 24 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6 }}
+              >
                 <Card
-                  variant="primary"
-                  className="p-7 hover:-translate-y-0.5 transition"
+                  className="p-7 h-full"
                   title={item.title}
                   description={item.description}
                   icon={Icon}
@@ -97,7 +92,7 @@ export function Features({
               </motion.div>
             );
           })}
-        </motion.div>
+        </div>
       </Container>
     </section>
   );

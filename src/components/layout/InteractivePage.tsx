@@ -13,23 +13,20 @@ import { DevTools } from "@/components/sections/DevTools";
 
 import allPageData from "@/data/pageContent.json";
 
-function cx(...parts: Array<string | false | null | undefined>) {
-  return parts.filter(Boolean).join(" ");
-}
+import { cn } from "@/lib/cn";
 
 function surfaceCard() {
-  return "rounded-[24px] border border-border bg-card backdrop-blur-3xl shadow-sm";
+  return "rounded-[24px] border border-border bg-card";
 }
 
 function surfaceCardHover() {
-  return "transition hover:-translate-y-0.5 hover:border-border hover:shadow-md";
+  return "transition hover:-translate-y-0.5 hover:border-border";
 }
 
 function focusRing() {
   return "focus:outline-none focus-visible:ring-2 focus-visible:ring-link/60 focus-visible:ring-offset-2 focus-visible:ring-offset-page";
 }
 
-// ... focusRing() unchanged
 export function InteractivePage({ initialLang = "en" }: { initialLang?: "en" | "id" }) {
   const [lang, setLang] = useState<"en" | "id">(initialLang);
   const [mediumArticles, setMediumArticles] = useState<{ title: string, body: string, href: string, image: string }[] | null>(null);
@@ -93,24 +90,9 @@ export function InteractivePage({ initialLang = "en" }: { initialLang?: "en" | "
 
   return (
     <div className="min-h-dvh flex flex-col text-primary transition-colors duration-300">
-      <div aria-hidden="true" className="pointer-events-none fixed inset-0 -z-10 overflow-hidden">
-        <div
-          className="absolute left-[10%] top-[-10%] h-[600px] w-[600px] rounded-full blur-[120px] opacity-50 mix-blend-multiply dark:mix-blend-screen transition-opacity duration-1000"
-          style={{ background: "radial-gradient(circle, rgba(0,113,227,0.4), transparent 70%)" }}
-        />
-        <div
-          className="absolute right-[-5%] top-[20%] h-[700px] w-[700px] rounded-full blur-[140px] opacity-40 mix-blend-multiply dark:mix-blend-screen transition-opacity duration-1000"
-          style={{ background: "radial-gradient(circle, rgba(162,50,200,0.3), transparent 60%)" }}
-        />
-        <div
-          className="absolute bottom-[-10%] left-[30%] h-[600px] w-[600px] rounded-full blur-[120px] opacity-40 mix-blend-multiply dark:mix-blend-screen transition-opacity duration-1000"
-          style={{ background: "radial-gradient(circle, rgba(52,199,89,0.25), transparent 70%)" }}
-        />
-      </div>
-
       <Navbar lang={lang} onLangChange={setLang} ctaLabel={pageData.hero.primaryCtaLabel} />
       <main id="main-content">
-        <Hero {...pageData.hero} badge={undefined} stats={undefined} />
+        <Hero {...pageData.hero} />
         <TechStack id="stack" />
         <Features {...pageData.features as any} />
 
@@ -129,7 +111,7 @@ export function InteractivePage({ initialLang = "en" }: { initialLang?: "en" | "
               {pageData.howItWorks.steps.map((s: any, idx: number) => (
                 <li
                   key={s.title}
-                  className={cx(surfaceCard(), "p-7", surfaceCardHover())}
+                  className={cn(surfaceCard(), "p-7", surfaceCardHover())}
                 >
                   <div className="flex items-start gap-4">
                     <div className="grid h-11 w-11 place-items-center rounded-xl bg-primary/10 text-sm font-bold text-link ring-1 ring-link/25">
@@ -150,43 +132,6 @@ export function InteractivePage({ initialLang = "en" }: { initialLang?: "en" | "
           </div>
         </section>
 
-        {/*
-        <section className="py-16 sm:py-24">
-          <div className="mx-auto max-w-6xl px-4 sm:px-6">
-            <header className="max-w-2xl">
-              <h2 className="text-3xl font-bold tracking-tight sm:text-4xl text-primary">
-                {pageData.testimonials.title}
-              </h2>
-              <p className="mt-4 text-base text-secondary">
-                {pageData.testimonials.subtitle}
-              </p>
-            </header>
-
-            <div className="mt-12 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-              {pageData.testimonials.items.map((t: any) => (
-                <figure
-                  key={t.label}
-                  className={cx(surfaceCard(), "p-7", surfaceCardHover())}
-                >
-                  <div className="flex items-center gap-4">
-                    <div className="h-11 w-11 rounded-full bg-border" />
-                    <div>
-                      <p className="text-sm font-semibold tracking-tight text-primary">
-                        {t.label}
-                      </p>
-                      <p className="text-xs text-secondary">{t.name}</p>
-                    </div>
-                  </div>
-                  <blockquote className="mt-6 text-sm leading-relaxed text-secondary">
-                    “{t.quote}”
-                  </blockquote>
-                </figure>
-              ))}
-            </div>
-          </div>
-        </section>
-        */}
-
         <article id="career" className="py-12 sm:py-16">
           <div className="mx-auto max-w-6xl px-4 sm:px-6">
             <header className="max-w-2xl mb-12">
@@ -202,7 +147,7 @@ export function InteractivePage({ initialLang = "en" }: { initialLang?: "en" | "
               {pageData.career.roles.map((role: any, idx: number) => (
                 <div key={idx} className="relative pl-8 md:pl-12 group">
                   <span className="absolute -left-[9px] top-6 h-4 w-4 rounded-full bg-border transition-colors duration-300 group-hover:bg-link ring-4 ring-background" />
-                  <div className={cx(surfaceCard(), "p-6 sm:p-8", surfaceCardHover())}>
+                  <div className={cn(surfaceCard(), "p-6 sm:p-8", surfaceCardHover())}>
                     <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-4 mb-4">
                       <div>
                         <h3 className="text-xl font-bold tracking-tight text-primary group-hover:text-link transition-colors">
@@ -255,7 +200,7 @@ export function InteractivePage({ initialLang = "en" }: { initialLang?: "en" | "
                 <a
                   key={i}
                   href={project.href}
-                  className={cx(surfaceCard(), "p-6", surfaceCardHover(), focusRing())}
+                  className={cn(surfaceCard(), "p-6", surfaceCardHover(), focusRing())}
                 >
                   <div className="relative aspect-[16/10] w-full overflow-hidden rounded-[20px] bg-gray-800">
                     {project.image ? (
@@ -279,7 +224,7 @@ export function InteractivePage({ initialLang = "en" }: { initialLang?: "en" | "
                         {project.description}
                       </p>
                     </div>
-                    <span className="mt-1 shrink-0 text-link/80 opacity-0 transition group-hover:opacity-100">
+                    <span className="mt-1 shrink-0 text-link opacity-0 transition group-hover:opacity-100">
                       →
                     </span>
                   </div>
@@ -329,7 +274,7 @@ export function InteractivePage({ initialLang = "en" }: { initialLang?: "en" | "
                   key={x.title + idx}
                   href={x.href}
                   target="_blank"
-                  className={cx(surfaceCard(), "p-6 shrink-0 w-[85vw] sm:w-[400px] flex flex-col snap-start", surfaceCardHover(), focusRing())}
+                  className={cn(surfaceCard(), "p-6 shrink-0 w-[85vw] sm:w-[400px] flex flex-col snap-start", surfaceCardHover(), focusRing())}
                 >
                   <div className="relative aspect-[16/9] w-full overflow-hidden rounded-[20px] bg-gray-800">
                     {x.image ? (
@@ -355,7 +300,7 @@ export function InteractivePage({ initialLang = "en" }: { initialLang?: "en" | "
               {showLoadMore ? (
                 <button
                   onClick={handleLoadMore}
-                  className={cx(surfaceCard(), "p-6 shrink-0 w-[85vw] sm:w-[300px] flex flex-col items-center justify-center snap-start group cursor-pointer text-left outline-none", surfaceCardHover(), focusRing())}
+                  className={cn(surfaceCard(), "p-6 shrink-0 w-[85vw] sm:w-[300px] flex flex-col items-center justify-center snap-start group cursor-pointer text-left outline-none", surfaceCardHover(), focusRing())}
                 >
                   <div className="h-16 w-16 rounded-full bg-primary/10 text-primary flex items-center justify-center group-hover:scale-110 transition-transform">
                     <span className="text-3xl font-light mb-1">+</span>
@@ -368,10 +313,10 @@ export function InteractivePage({ initialLang = "en" }: { initialLang?: "en" | "
                 <a
                   href="https://medium.com/@yohanesrizky"
                   target="_blank"
-                  className={cx(surfaceCard(), "p-6 shrink-0 w-[85vw] sm:w-[300px] flex flex-col items-center justify-center snap-start group outline-none", surfaceCardHover(), focusRing())}
+                  className={cn(surfaceCard(), "p-6 shrink-0 w-[85vw] sm:w-[300px] flex flex-col items-center justify-center snap-start group outline-none", surfaceCardHover(), focusRing())}
                 >
                   <div className="h-16 w-16 rounded-full bg-primary/10 text-primary flex items-center justify-center group-hover:scale-110 transition-transform">
-                    <span className="text-2xl">→</span>
+                    <span className="text-3xl font-light mb-1">+</span>
                   </div>
                   <h3 className="mt-6 text-lg font-semibold tracking-tight text-primary text-center">
                     {lang === "en" ? "Read More on Medium" : "Baca Selengkapnya di Medium"}

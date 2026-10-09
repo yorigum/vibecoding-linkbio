@@ -27,14 +27,14 @@ export default function NotFound() {
       <div className="mt-10 flex flex-col sm:flex-row gap-4">
         <Link
           href="/en"
-          className="inline-flex items-center justify-center gap-2 rounded-full bg-link px-6 py-3 text-sm font-semibold text-white shadow-sm transition hover:bg-link/90 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-link"
+          className="inline-flex items-center justify-center gap-2 rounded-full bg-cta px-6 py-3 text-sm font-semibold text-white shadow-sm transition hover:bg-cta/90 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-link"
         >
           <FiArrowLeft className="h-4 w-4" />
           Back to Home
         </Link>
         <Link
           href="/id"
-          className="inline-flex items-center justify-center rounded-full border border-border/50 bg-card px-6 py-3 text-sm font-semibold text-primary shadow-sm transition hover:bg-hover focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-link"
+          className="inline-flex items-center justify-center rounded-full border border-border/50 bg-card px-6 py-3 text-sm font-semibold text-primary transition hover:bg-hover focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-link"
         >
           Kembali ke Beranda
         </Link>
