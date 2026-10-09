@@ -1,7 +1,8 @@
 "use client";
 
 import { Container } from "@/components/layout/Container";
-import { Badge } from "@/components/ui";
+import { Badge } from "@/components/ui/Badge";
+import { cn } from "@/lib/cn";
 import { BrandLogo } from "@/components/ui/BrandLogo";
 import { FiGithub, FiInstagram, FiLinkedin } from "react-icons/fi";
 import { FaMediumM } from "react-icons/fa";
@@ -17,32 +18,27 @@ export interface FooterProps {
   copyright?: string;
 }
 
-function cx(...parts: Array<string | false | null | undefined>) {
-  return parts.filter(Boolean).join(" ");
-}
-
 export function Footer({
   className,
   links = [
     { href: "#portfolio", label: "Portfolio" },
-    //  { href: "#featured", label: "Featured Media" },
     { href: "#services", label: "Services" },
   ],
   copyright = "Copyright © 2026",
 }: FooterProps) {
   return (
-    <footer className={cx("border-t border-border/50 py-14", className)}>
+    <footer className={cn("border-t border-border/50 py-14", className)}>
       <Container>
         <div className="grid gap-10 md:grid-cols-3 md:items-start">
           <div>
-            <BrandLogo className="h-28 w-auto" />
+            <BrandLogo className="h-10 w-auto" />
             <address className="mt-4 not-italic text-sm leading-relaxed text-secondary">
-              I'm Yohanes Rizky Gumilir — an Android Developer specializing in Kotlin & Jetpack Compose, and a passionate Music Producer.
+              I'm Yohanes Rizky Gumilir, an Android Developer specializing in Kotlin and Jetpack Compose, and a passionate Music Producer.
               <br />
               <span className="mt-2 block">Jakarta, Indonesia • yoriworks@gmail.com</span>
             </address>
             <div className="mt-5">
-              <Badge variant="outline">Mobile • Music</Badge>
+              <Badge>Mobile • Music</Badge>
             </div>
           </div>
 
@@ -91,7 +87,7 @@ export function Footer({
         </div>
 
         <div className="mt-10">
-          <p className="text-xs text-muted">{copyright}</p>
+          <p className="text-xs text-secondary">{copyright}</p>
         </div>
       </Container>
     </footer>

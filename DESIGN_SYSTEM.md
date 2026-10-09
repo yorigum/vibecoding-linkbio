@@ -4,7 +4,7 @@ This document outlines the core design tokens, patterns, and principles used in 
 
 ## 1. Colors
 
-We use Semantic CSS variables integrated directly with Tailwind CSS v4 variables to automatically adapt states between Dark and Light mode.
+We use Semantic CSS variables integrated directly with Tailwind CSS v4 variables to automatically adapt states between Dark and Light mode. Dark uses off-black `#09090b`, never pure `#000000`. Single accent Apple blue (`#0071e3` / `#2997ff`), see `DESIGN.md`.
 
 ### Background Layers
 | Semantic Token | Light Mode Value | Dark Mode Value | Usage |
@@ -14,20 +14,20 @@ We use Semantic CSS variables integrated directly with Tailwind CSS v4 variables
 | `--bg-hover`   | `#f0f0f0`        | `#1a1a1a`       | Interactive element hover states (`bg-hover`) |
 | `--border-color` | `#e2e2e2`      | `#222222`       | Subtle borders (`border-border/50`) |
 
-### Text Hierarchy
+### Text Hierarchy (AA-verified; light secondary `#6e6e73` = 4.7:1 on page bg)
 | Semantic Token | Light Mode Value | Dark Mode Value | Usage |
 | -------------- | ---------------- | --------------- |-------|
-| `--text-primary`| `#050505`       | `#fafafa`       | Headings, primary body text (`text-primary`) |
-| `--text-secondary`| `#555555`     | `#888888`       | Subtitles, descriptions, muted content (`text-secondary`) |
-| `--text-muted` | `#888888`        | `#555555`       | Placeholders, disabled text, footers (`text-muted`) |
+| `--text-primary`| `#1d1d1f` (15.5:1) | `#f5f5f7` (18.3:1) | Headings, primary body text (`text-primary`) |
+| `--text-secondary`| `#6e6e73` (4.7:1) | `#86868b` (5.5:1) | Subtitles, descriptions, muted content (`text-secondary`) |
+| `--text-muted` | `#a1a1a6` (decorative only, never small text) | `#515154` | Large/meta decoration only |
 
-### Accents
-| Accent Context | Value | Tailwind Token | Usage |
-| -------------- | ----- | --------- | ----- |
-| **CTA (Brand)** | `#E50914` | `bg-cta` | Primary call to actions, vivid highlights |
-| **Links / Info**| `#00D4FF` | `text-link` | Text links, focus rings, info badges |
-| **Success**    | `#00cc66` | `text-success` | Success validation, active states |
-| **Error**      | `#ff4444` | `text-error` | Error validation, destructive actions |
+### Accents (single-accent lock, see DESIGN.md; every pair AA-verified)
+| Accent Context | Light Value | Dark Value | Tailwind Token | Usage |
+| -------------- | ----------- | ---------- | --------- | ----- |
+| **Links / text** | `#0069d2` (4.9:1) | `#2997ff` (6.6:1) | `text-link` | Links, focus rings. The only accent hue |
+| **Brand / CTA bg** | `#0069d2` (white 5.3:1) | `#0071e3` (white 4.7:1) | `bg-cta` | Button backgrounds only. Darker than link text on purpose |
+| **Success**    | `#34c759` | `#30d158` | `text-success` | Form validation only, never decoration |
+| **Error**      | `#ff3b30` | `#ff453a` | `text-error` | Form validation only, never decoration |
 
 ---
 
@@ -66,8 +66,10 @@ Buttons manage `disabled` and `loading` states cleanly via strict utility mappin
 - **Focus Rings**: Standardized globally to `focus-visible:ring-2 focus-visible:ring-link/60 focus-visible:ring-offset-2 focus-visible:ring-offset-page`.
 
 ### Surface / Cards
-- **Base Surface**: `rounded-2xl border border-border/50 bg-card shadow-sm`
-- **Interactions**: `transition will-change-transform hover:-translate-y-0.5 hover:border-border hover:shadow-md`
+- **Base Surface**: `rounded-2xl border border-border/50 bg-card`
+- **Elevation only**: shadow exists only to mark lift above page, with reason. Never shadow on every card
+- **Interactions**: `transition will-change-transform hover:-translate-y-0.5 hover:border-border`
+- **Blur**: `backdrop-blur` only on fixed/sticky (navbar, overlay). Never on scrolling cards
 
 ### Form Inputs
 Standard inputs extract `outline-none border-none` from the generic HTML tag itself, and push standard borders onto a parent wrapper. This trick allows seamlessly rendering embedded prefix/suffix Lucide Icons inside the bounding box.

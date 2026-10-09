@@ -2,7 +2,8 @@
 
 import { useEffect, useState } from "react";
 import { useRouter, usePathname } from "next/navigation";
-import { Button } from "@/components/ui";
+import { Button } from "@/components/ui/Button";
+import { cn } from "@/lib/cn";
 import { Container } from "@/components/layout/Container";
 import { ThemeToggle } from "@/components/ui/ThemeToggle";
 import { BrandLogo } from "@/components/ui/BrandLogo";
@@ -24,13 +25,9 @@ export interface NavbarProps {
   onLangChange?: (lang: "en" | "id") => void;
 }
 
-function cx(...parts: Array<string | false | null | undefined>) {
-  return parts.filter(Boolean).join(" ");
-}
-
 export function Navbar({
   className,
-  brand = <BrandLogo className="h-32 w-auto" />,
+  brand = <BrandLogo className="h-10 w-auto" />,
   links = [
     { href: "#stack", label: "Tech Stack" },
     { href: "#portfolio", label: "Portfolio" },
@@ -84,7 +81,7 @@ export function Navbar({
 
   return (
     <nav
-      className={cx(
+      className={cn(
         "sticky top-0 z-50 w-full transition-all duration-300",
         isScrolled
           ? "border-b border-border bg-page/70 backdrop-blur-2xl backdrop-saturate-150"
@@ -93,7 +90,7 @@ export function Navbar({
       )}
     >
       <Container
-        className={cx(
+        className={cn(
           "flex items-center justify-between relative transition-all duration-300",
           isScrolled ? "py-4" : "py-6"
         )}
@@ -132,7 +129,7 @@ export function Navbar({
             {lang === "en" ? "EN" : "ID"}
           </button>
           <ThemeToggle />
-          <Button href={ctaHref} variant="primary" className="shadow-sm">
+          <Button href={ctaHref} variant="primary">
             {ctaLabel}
           </Button>
         </div>
@@ -166,7 +163,7 @@ export function Navbar({
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -10 }}
             transition={{ duration: 0.2 }}
-            className="absolute top-full left-0 w-full border-b border-border bg-page/80 backdrop-blur-3xl backdrop-saturate-200 shadow-lg md:hidden"
+            className="absolute top-full left-0 w-full border-b border-border bg-page/80 backdrop-blur-3xl backdrop-saturate-200 md:hidden"
           >
             <div className="flex flex-col px-6 py-6 space-y-5">
               {links.map((l) => (
