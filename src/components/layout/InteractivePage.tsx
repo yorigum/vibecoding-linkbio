@@ -167,6 +167,43 @@ export function InteractivePage({ initialLang = "en" }: { initialLang?: "en" | "
                 </div>
               ))}
             </div>
+
+            {pageData.education && (
+              <div className={cn(surfaceCard(), "mt-8 p-6 sm:p-8", surfaceCardHover())}>
+                <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-6">
+                  <div>
+                    <span className="text-xs font-semibold text-link uppercase tracking-wider">
+                      {lang === "en" ? "Academic Foundation" : "Latar Belakang Akademis"}
+                    </span>
+                    <h3 className="text-lg font-bold text-primary mt-1">{pageData.education.degree}</h3>
+                    <p className="text-sm text-secondary mt-0.5">
+                      {pageData.education.institution} · {pageData.education.period}
+                    </p>
+                    {pageData.education.thesis && (
+                      <p className="text-xs text-secondary mt-2 italic">
+                        Thesis: &ldquo;{pageData.education.thesis}&rdquo;
+                      </p>
+                    )}
+                  </div>
+
+                  {pageData.education.certifications && (
+                    <div className="md:border-l md:border-border/50 md:pl-6 space-y-2">
+                      <span className="text-xs font-semibold text-secondary uppercase tracking-wider">
+                        {lang === "en" ? "Key Certifications" : "Sertifikasi Utama"}
+                      </span>
+                      <ul className="space-y-1.5 text-xs text-secondary list-none">
+                        {pageData.education.certifications.map((cert: string, idx: number) => (
+                          <li key={idx} className="flex items-center gap-2">
+                            <span className="h-1.5 w-1.5 rounded-full bg-link shrink-0" />
+                            <span>{cert}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  )}
+                </div>
+              </div>
+            )}
           </div>
         </article>
 
