@@ -1,8 +1,7 @@
 "use client";
 
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect } from "react";
 import Image from "next/image";
-import { FiChevronLeft, FiChevronRight } from "react-icons/fi";
 import { Footer } from "@/components/layout/Footer";
 import { Navbar } from "@/components/layout/Navbar";
 import { CTA } from "@/components/sections/CTA";
@@ -10,17 +9,17 @@ import { Features } from "@/components/sections/Features";
 import { Hero } from "@/components/sections/Hero";
 import { TechStack } from "@/components/sections/TechStack";
 import { DevTools } from "@/components/sections/DevTools";
+import { FiArrowUpRight, FiBookOpen } from "react-icons/fi";
 
 import allPageData from "@/data/pageContent.json";
-
 import { cn } from "@/lib/cn";
 
 function surfaceCard() {
-  return "rounded-[24px] border border-border bg-card";
+  return "rounded-2xl border border-border/50 bg-card";
 }
 
 function surfaceCardHover() {
-  return "transition hover:-translate-y-0.5 hover:border-border";
+  return "transition will-change-transform hover:-translate-y-0.5 hover:border-border";
 }
 
 function focusRing() {
@@ -30,36 +29,23 @@ function focusRing() {
 export function InteractivePage({ initialLang = "en" }: { initialLang?: "en" | "id" }) {
   const [lang, setLang] = useState<"en" | "id">(initialLang);
   const [mediumArticles, setMediumArticles] = useState<{ title: string, body: string, href: string, image: string }[] | null>(null);
-  const [visibleCount, setVisibleCount] = useState(3);
-  const scrollRef = useRef<HTMLDivElement>(null);
   const pageData = (allPageData as any)[lang];
-
-  const scroll = (direction: "left" | "right") => {
-    if (scrollRef.current) {
-      const scrollAmount = scrollRef.current.clientWidth * 0.8;
-      scrollRef.current.scrollBy({ left: direction === "left" ? -scrollAmount : scrollAmount, behavior: "smooth" });
-    }
-  };
-
-  const handleLoadMore = (e: React.MouseEvent) => {
-    e.preventDefault();
-    setVisibleCount((prev) => prev + 3);
-  };
-
-  const activeArticles = mediumArticles || pageData.studio.items;
-  const showLoadMore = activeArticles.length > visibleCount;
 
   useEffect(() => {
     setLang(initialLang);
   }, [initialLang]);
 
   useEffect(() => {
+    const controller = new AbortController();
     async function fetchMedium() {
       try {
-        const res = await fetch(`https://api.rss2json.com/v1/api.json?rss_url=https://medium.com/feed/@yohanesrizky&t=${Date.now()}`);
+        const res = await fetch(
+          `https://api.rss2json.com/v1/api.json?rss_url=https://medium.com/feed/@yohanesrizky&t=${Date.now()}`,
+          { signal: controller.signal }
+        );
         if (res.ok) {
           const data = await res.json();
-          if (data.status === "ok" && data.items) {
+          if (data?.status === "ok" && Array.isArray(data.items)) {
             const relevantKeywords = ["android", "development", "developer", "kotlin", "jetpack", "architecture", "mobile", "vibecoding", "coding", "senior", "vibe coding"];
             const filtered = data.items.filter((item: any) => {
               if (!item.categories || item.categories.length === 0) return true;
@@ -67,262 +53,235 @@ export function InteractivePage({ initialLang = "en" }: { initialLang?: "en" | "
             });
 
             const finalItems = filtered.length > 0 ? filtered : data.items;
-
             const mapped = finalItems.map((item: any) => {
-              const imgMatch = item.content.match(/<img[^>]+src="([^">]+)"/);
+              const imgMatch = item.content?.match(/<img[^>]+src="([^">]+)"/);
               const fallbackImg = "https://images.pexels.com/photos/943096/pexels-photo-943096.jpeg";
               return {
                 title: item.title,
-                body: item.description.replace(/<[^>]+>/g, '').replace(/&amp;/g, '&').substring(0, 120) + '...',
-                href: item.link.split('?')[0],
+                body: item.description ? item.description.replace(/<[^>]+>/g, '').replace(/&amp;/g, '&').substring(0, 120) + '...' : '',
+                href: item.link ? item.link.split('?')[0] : 'https://medium.com/@yohanesrizky',
                 image: item.thumbnail || (imgMatch ? imgMatch[1] : fallbackImg)
               };
             });
             setMediumArticles(mapped);
           }
         }
-      } catch (err) {
-        console.error("Medium fetch error", err);
+      } catch {
+        // Silently fall back to static articles in pageContent.json without tripping Next.js dev error overlay
       }
     }
     fetchMedium();
+    return () => controller.abort();
   }, []);
+
+  const activeArticles = (mediumArticles || pageData.studio.items).slice(0, 3);
 
   return (
     <div className="min-h-dvh flex flex-col text-primary transition-colors duration-300">
-      <Navbar lang={lang} onLangChange={setLang} ctaLabel={pageData.hero.primaryCtaLabel} />
+      <Navbar
+        lang={lang}
+        onLangChange={setLang}
+        ctaLabel={pageData.hero.primaryCtaLabel}
+        links={[
+          { href: "#stack", label: "Tech Stack" },
+          { href: "#career", label: lang === "en" ? "Experience" : "Pengalaman" },
+        ]}
+      />
       <main id="main-content">
         <Hero {...pageData.hero} />
         <TechStack id="stack" />
         <Features {...pageData.features as any} />
 
-        <section className="py-12 sm:py-16">
+        {/* Development Methodology (Clean sequence without 01/02/03 index bubbles) */}
+        <section className="py-16 sm:py-24">
           <div className="mx-auto max-w-6xl px-4 sm:px-6">
-            <header className="max-w-2xl">
+            <header className="max-w-2xl mb-12">
+              <p className="text-xs font-semibold tracking-wider uppercase text-link mb-2">Process & Delivery</p>
               <h2 className="text-3xl font-bold tracking-tight sm:text-4xl text-primary">
                 {pageData.howItWorks.title}
               </h2>
-              <p className="mt-4 text-base text-secondary">
+              <p className="mt-4 text-base text-secondary leading-relaxed">
                 {pageData.howItWorks.subtitle}
               </p>
             </header>
 
-            <ol className="mt-12 grid gap-6 md:grid-cols-3">
-              {pageData.howItWorks.steps.map((s: any, idx: number) => (
-                <li
+            <div className="grid gap-6 md:grid-cols-3">
+              {pageData.howItWorks.steps.map((s: any) => (
+                <div
                   key={s.title}
-                  className={cn(surfaceCard(), "p-7", surfaceCardHover())}
+                  className={cn(surfaceCard(), "p-7 sm:p-8 flex flex-col justify-between", surfaceCardHover())}
                 >
-                  <div className="flex items-start gap-4">
-                    <div className="grid h-11 w-11 place-items-center rounded-xl bg-primary/10 text-sm font-bold text-link ring-1 ring-link/25">
-                      {idx + 1}
-                    </div>
-                    <div>
-                      <h3 className="text-lg font-semibold tracking-tight text-primary">
-                        {s.title}
-                      </h3>
-                      <p className="mt-4 text-sm leading-relaxed text-secondary">
-                        {s.body}
-                      </p>
-                    </div>
-                  </div>
-                </li>
-              ))}
-            </ol>
-          </div>
-        </section>
-
-        <article id="career" className="py-12 sm:py-16">
-          <div className="mx-auto max-w-6xl px-4 sm:px-6">
-            <header className="max-w-2xl mb-12">
-              <h2 className="text-3xl font-bold tracking-tight sm:text-4xl text-primary">
-                {pageData.career.title}
-              </h2>
-              <p className="mt-4 text-base text-secondary">
-                {pageData.career.subtitle}
-              </p>
-            </header>
-
-            <div className="relative border-l-2 border-border/50 ml-4 md:ml-6 space-y-10">
-              {pageData.career.roles.map((role: any, idx: number) => (
-                <div key={idx} className="relative pl-8 md:pl-12 group">
-                  <span className="absolute -left-[9px] top-6 h-4 w-4 rounded-full bg-border transition-colors duration-300 group-hover:bg-link ring-4 ring-background" />
-                  <div className={cn(surfaceCard(), "p-6 sm:p-8", surfaceCardHover())}>
-                    <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-4 mb-4">
-                      <div>
-                        <h3 className="text-xl font-bold tracking-tight text-primary group-hover:text-link transition-colors">
-                          {role.role}
-                        </h3>
-                        <div className="flex flex-col sm:flex-row sm:items-center gap-1 sm:gap-3 mt-1.5">
-                          <p className="font-semibold text-primary/80">{role.company}</p>
-                          <span className="hidden sm:inline text-border/80">•</span>
-                          <p className="text-sm text-secondary">{role.location}</p>
-                        </div>
-                      </div>
-                      <time className="shrink-0 text-xs font-semibold text-link bg-link/10 px-3 py-1.5 rounded-full border border-link/20">
-                        {role.period}
-                      </time>
-                    </div>
-                    {role.achievements.length > 0 && (
-                      <div className="mt-6 pt-6 border-t border-border/50">
-                        <ul className="space-y-3 text-sm text-secondary list-none">
-                          {role.achievements.map((ach: string, i: number) => (
-                            <li key={i} className="flex items-start gap-3">
-                              <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-link/60" />
-                              <span className="leading-relaxed">{ach}</span>
-                            </li>
-                          ))}
-                        </ul>
-                      </div>
-                    )}
+                  <div>
+                    <h3 className="text-lg font-bold tracking-tight text-primary">
+                      {s.title}
+                    </h3>
+                    <p className="mt-3 text-sm leading-relaxed text-secondary">
+                      {s.body}
+                    </p>
                   </div>
                 </div>
               ))}
             </div>
           </div>
+        </section>
+
+        {/* Career & Experience Ledger (Clean executive rows, no vertical pipe lines) */}
+        <article id="career" className="py-16 sm:py-24 bg-page/40">
+          <div className="mx-auto max-w-6xl px-4 sm:px-6">
+            <header className="max-w-2xl mb-12">
+              <p className="text-xs font-semibold tracking-wider uppercase text-link mb-2">Track Record</p>
+              <h2 className="text-3xl font-bold tracking-tight sm:text-4xl text-primary">
+                {pageData.career.title}
+              </h2>
+              <p className="mt-4 text-base text-secondary leading-relaxed">
+                {pageData.career.subtitle}
+              </p>
+            </header>
+
+            <div className="space-y-6">
+              {pageData.career.roles.map((role: any, idx: number) => (
+                <div
+                  key={idx}
+                  className={cn(surfaceCard(), "p-6 sm:p-8", surfaceCardHover())}
+                >
+                  <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-4 mb-4">
+                    <div>
+                      <h3 className="text-xl font-bold tracking-tight text-primary">
+                        {role.role}
+                      </h3>
+                      <div className="flex flex-wrap items-center gap-2 mt-1.5">
+                        <span className="font-semibold text-primary">{role.company}</span>
+                        <span className="text-secondary">•</span>
+                        <span className="text-sm text-secondary">{role.location}</span>
+                      </div>
+                    </div>
+                    <span className="self-start text-xs font-medium text-link bg-primary/5 px-3 py-1.5 rounded-full border border-border/50">
+                      {role.period}
+                    </span>
+                  </div>
+
+                  {role.achievements.length > 0 && (
+                    <div className="mt-6 pt-6 border-t border-border/50">
+                      <ul className="space-y-2.5 text-sm text-secondary list-none">
+                        {role.achievements.map((ach: string, i: number) => (
+                          <li key={i} className="flex items-start gap-3">
+                            <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-link" />
+                            <span className="leading-relaxed">{ach}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  )}
+                </div>
+              ))}
+            </div>
+
+            {pageData.education && (
+              <div className={cn(surfaceCard(), "mt-8 p-6 sm:p-8", surfaceCardHover())}>
+                <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-6">
+                  <div>
+                    <span className="text-xs font-semibold text-link uppercase tracking-wider">
+                      {lang === "en" ? "Academic Foundation" : "Latar Belakang Akademis"}
+                    </span>
+                    <h3 className="text-lg font-bold text-primary mt-1">{pageData.education.degree}</h3>
+                    <p className="text-sm text-secondary mt-0.5">
+                      {pageData.education.institution} · {pageData.education.period}
+                    </p>
+                    {pageData.education.thesis && (
+                      <p className="text-xs text-secondary mt-2 italic">
+                        Thesis: &ldquo;{pageData.education.thesis}&rdquo;
+                      </p>
+                    )}
+                  </div>
+
+                  {pageData.education.certifications && (
+                    <div className="md:border-l md:border-border/50 md:pl-6 space-y-2">
+                      <span className="text-xs font-semibold text-secondary uppercase tracking-wider">
+                        {lang === "en" ? "Key Certifications" : "Sertifikasi Utama"}
+                      </span>
+                      <ul className="space-y-1.5 text-xs text-secondary list-none">
+                        {pageData.education.certifications.map((cert: string, idx: number) => (
+                          <li key={idx} className="flex items-center gap-2">
+                            <span className="h-1.5 w-1.5 rounded-full bg-link shrink-0" />
+                            <span>{cert}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  )}
+                </div>
+              </div>
+            )}
+          </div>
         </article>
 
         <CTA {...pageData.cta} />
 
-        <article id="portfolio" className="py-12 sm:py-16">
-          <div className="mx-auto max-w-6xl px-4 sm:px-6">
-            <header className="max-w-2xl">
-              <h2 className="text-3xl font-bold tracking-tight sm:text-4xl text-primary">
-                {pageData.portfolio.title}
-              </h2>
-              <p className="mt-4 text-base text-secondary">
-                {pageData.portfolio.subtitle}
-              </p>
-            </header>
-
-            <div className="mt-12 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-              {pageData.portfolio.projects.map((project: any, i: number) => (
-                <a
-                  key={i}
-                  href={project.href}
-                  className={cn(surfaceCard(), "p-6", surfaceCardHover(), focusRing())}
-                >
-                  <div className="relative aspect-[16/10] w-full overflow-hidden rounded-[20px] bg-gray-800">
-                    {project.image ? (
-                      <Image
-                        src={project.image}
-                        alt={project.title}
-                        fill
-                        className="object-cover transition-transform duration-500 group-hover:scale-105"
-                        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                      />
-                    ) : (
-                      <div className="h-full w-full" />
-                    )}
-                  </div>
-                  <div className="mt-6 flex items-start justify-between gap-4">
-                    <div className="min-w-0">
-                      <h3 className="truncate text-base font-semibold tracking-tight text-primary">
-                        {project.title}
-                      </h3>
-                      <p className="mt-2 text-sm text-secondary">
-                        {project.description}
-                      </p>
-                    </div>
-                    <span className="mt-1 shrink-0 text-link opacity-0 transition group-hover:opacity-100">
-                      →
-                    </span>
-                  </div>
-                </a>
-              ))}
-            </div>
-          </div>
-        </article>
 
         <DevTools {...pageData.devTools} />
 
-        <section id="studio" className="py-12 sm:py-16" >
+        {/* Editorial Articles / Medium Studio */}
+        <section id="studio" className="py-16 sm:py-24 bg-page/40">
           <div className="mx-auto max-w-6xl px-4 sm:px-6">
-            <header className="flex flex-col sm:flex-row sm:items-end justify-between gap-6 max-w-6xl">
+            <header className="flex flex-col sm:flex-row sm:items-end justify-between gap-6 max-w-6xl mb-12">
               <div className="max-w-2xl">
+                <p className="text-xs font-semibold tracking-wider uppercase text-link mb-2">Technical Writing</p>
                 <h2 className="text-3xl font-bold tracking-tight sm:text-4xl text-primary">
                   {pageData.studio.title}
                 </h2>
-                <p className="mt-4 text-base text-secondary">
+                <p className="mt-4 text-base text-secondary leading-relaxed">
                   {pageData.studio.subtitle}
                 </p>
               </div>
-              <div className="flex items-center gap-2">
-                <button
-                  onClick={() => scroll("left")}
-                  className="grid h-10 w-10 place-items-center rounded-full border border-border/50 bg-card text-secondary transition hover:border-border hover:bg-hover hover:text-primary focus:outline-none focus-visible:ring-2 focus-visible:ring-link/60"
-                  aria-label="Scroll left"
-                >
-                  <FiChevronLeft className="h-5 w-5" />
-                </button>
-                <button
-                  onClick={() => scroll("right")}
-                  className="grid h-10 w-10 place-items-center rounded-full border border-border/50 bg-card text-secondary transition hover:border-border hover:bg-hover hover:text-primary focus:outline-none focus-visible:ring-2 focus-visible:ring-link/60"
-                  aria-label="Scroll right"
-                >
-                  <FiChevronRight className="h-5 w-5" />
-                </button>
-              </div>
+              <a
+                href="https://medium.com/@yohanesrizky"
+                target="_blank"
+                rel="noreferrer noopener"
+                className="inline-flex items-center gap-2 text-sm font-semibold text-link hover:underline"
+              >
+                <FiBookOpen className="w-4 h-4" />
+                <span>{lang === "en" ? "View all articles" : "Lihat semua artikel"}</span>
+                <FiArrowUpRight className="w-4 h-4" />
+              </a>
             </header>
 
-            <div
-              ref={scrollRef}
-              className="mt-12 flex gap-6 overflow-x-auto pb-8 snap-x snap-mandatory [&::-webkit-scrollbar]:hidden [-ms-overflow-style:'none'] [scrollbar-width:'none']"
-            >
-              {activeArticles.slice(0, visibleCount).map((x: any, idx: number) => (
+            <div className="grid gap-6 md:grid-cols-3">
+              {activeArticles.map((x: any, idx: number) => (
                 <a
                   key={x.title + idx}
                   href={x.href}
                   target="_blank"
-                  className={cn(surfaceCard(), "p-6 shrink-0 w-[85vw] sm:w-[400px] flex flex-col snap-start", surfaceCardHover(), focusRing())}
+                  rel="noreferrer noopener"
+                  className={cn(surfaceCard(), "p-6 flex flex-col justify-between group", surfaceCardHover(), focusRing())}
                 >
-                  <div className="relative aspect-[16/9] w-full overflow-hidden rounded-[20px] bg-gray-800">
-                    {x.image ? (
-                      <Image
-                        src={x.image}
-                        alt={x.title}
-                        fill
-                        className="object-cover transition-transform duration-500 group-hover:scale-105"
-                        sizes="(max-width: 768px) 85vw, 400px"
-                        loading="lazy"
-                      />
-                    ) : (
-                      <div className="h-full w-full" />
-                    )}
+                  <div>
+                    <div className="relative aspect-[16/9] w-full overflow-hidden rounded-xl bg-gray-800">
+                      {x.image ? (
+                        <Image
+                          src={x.image}
+                          alt={x.title}
+                          fill
+                          className="object-cover transition-transform duration-500 group-hover:scale-105"
+                          sizes="(max-width: 768px) 100vw, 380px"
+                          loading="lazy"
+                        />
+                      ) : (
+                        <div className="h-full w-full bg-primary/5" />
+                      )}
+                    </div>
+                    <h3 className="mt-6 text-base font-bold tracking-tight text-primary line-clamp-2">
+                      {x.title}
+                    </h3>
+                    <p className="mt-2 text-sm text-secondary line-clamp-3 leading-relaxed">
+                      {x.body}
+                    </p>
                   </div>
-                  <h3 className="mt-6 text-lg font-semibold tracking-tight text-primary">
-                    {x.title}
-                  </h3>
-                  <p className="mt-2 text-sm text-secondary flex-1">{x.body}</p>
+                  <div className="mt-6 pt-4 border-t border-border/50 flex items-center justify-between text-xs text-link font-medium">
+                    <span>{lang === "en" ? "Read on Medium" : "Baca di Medium"}</span>
+                    <FiArrowUpRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
+                  </div>
                 </a>
               ))}
-
-              {showLoadMore ? (
-                <button
-                  onClick={handleLoadMore}
-                  className={cn(surfaceCard(), "p-6 shrink-0 w-[85vw] sm:w-[300px] flex flex-col items-center justify-center snap-start group cursor-pointer text-left outline-none", surfaceCardHover(), focusRing())}
-                >
-                  <div className="h-16 w-16 rounded-full bg-primary/10 text-primary flex items-center justify-center group-hover:scale-110 transition-transform">
-                    <span className="text-3xl font-light mb-1">+</span>
-                  </div>
-                  <h3 className="mt-6 text-lg font-semibold tracking-tight text-primary text-center">
-                    {lang === "en" ? "Load More" : "Muat Lebih Banyak"}
-                  </h3>
-                </button>
-              ) : (
-                <a
-                  href="https://medium.com/@yohanesrizky"
-                  target="_blank"
-                  className={cn(surfaceCard(), "p-6 shrink-0 w-[85vw] sm:w-[300px] flex flex-col items-center justify-center snap-start group outline-none", surfaceCardHover(), focusRing())}
-                >
-                  <div className="h-16 w-16 rounded-full bg-primary/10 text-primary flex items-center justify-center group-hover:scale-110 transition-transform">
-                    <span className="text-3xl font-light mb-1">+</span>
-                  </div>
-                  <h3 className="mt-6 text-lg font-semibold tracking-tight text-primary text-center">
-                    {lang === "en" ? "Read More on Medium" : "Baca Selengkapnya di Medium"}
-                  </h3>
-                </a>
-              )}
             </div>
           </div>
         </section>

@@ -42,7 +42,7 @@ export function CTA({
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="relative overflow-hidden rounded-[2.5rem] border border-border/50 bg-card p-8 sm:p-14"
+          className="relative overflow-hidden rounded-2xl border border-border/50 bg-card p-8 sm:p-14"
         >
           {/* Single accent wash */}
           <div
