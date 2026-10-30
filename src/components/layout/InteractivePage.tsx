@@ -78,7 +78,15 @@ export function InteractivePage({ initialLang = "en" }: { initialLang?: "en" | "
 
   return (
     <div className="min-h-dvh flex flex-col text-primary transition-colors duration-300">
-      <Navbar lang={lang} onLangChange={setLang} ctaLabel={pageData.hero.primaryCtaLabel} />
+      <Navbar
+        lang={lang}
+        onLangChange={setLang}
+        ctaLabel={pageData.hero.primaryCtaLabel}
+        links={[
+          { href: "#stack", label: "Tech Stack" },
+          { href: "#career", label: lang === "en" ? "Experience" : "Pengalaman" },
+        ]}
+      />
       <main id="main-content">
         <Hero {...pageData.hero} />
         <TechStack id="stack" />
@@ -209,53 +217,6 @@ export function InteractivePage({ initialLang = "en" }: { initialLang?: "en" | "
 
         <CTA {...pageData.cta} />
 
-        {/* Selected Portfolio */}
-        <article id="portfolio" className="py-16 sm:py-24">
-          <div className="mx-auto max-w-6xl px-4 sm:px-6">
-            <header className="max-w-2xl mb-12">
-              <p className="text-xs font-semibold tracking-wider uppercase text-link mb-2">Featured Projects</p>
-              <h2 className="text-3xl font-bold tracking-tight sm:text-4xl text-primary">
-                {pageData.portfolio.title}
-              </h2>
-              <p className="mt-4 text-base text-secondary leading-relaxed">
-                {pageData.portfolio.subtitle}
-              </p>
-            </header>
-
-            <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-              {pageData.portfolio.projects.map((project: any, i: number) => (
-                <a
-                  key={i}
-                  href={project.href}
-                  className={cn(surfaceCard(), "p-6 group flex flex-col justify-between", surfaceCardHover(), focusRing())}
-                >
-                  <div>
-                    <div className="relative aspect-[16/10] w-full overflow-hidden rounded-xl bg-gray-800">
-                      {project.image ? (
-                        <Image
-                          src={project.image}
-                          alt={project.title}
-                          fill
-                          className="object-cover transition-transform duration-500 group-hover:scale-105"
-                          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                        />
-                      ) : (
-                        <div className="h-full w-full bg-primary/5" />
-                      )}
-                    </div>
-                    <h3 className="mt-6 text-lg font-bold tracking-tight text-primary flex items-center justify-between">
-                      <span>{project.title}</span>
-                      <FiArrowUpRight className="w-4 h-4 text-secondary group-hover:text-link group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
-                    </h3>
-                    <p className="mt-2 text-sm text-secondary leading-relaxed">
-                      {project.description}
-                    </p>
-                  </div>
-                </a>
-              ))}
-            </div>
-          </div>
-        </article>
 
         <DevTools {...pageData.devTools} />
 
