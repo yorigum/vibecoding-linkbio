@@ -80,7 +80,7 @@ export function TechStack({ className, id = "stack" }: TechStackProps) {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6 }}
-              className={`group relative p-8 rounded-[2rem] border border-border bg-card transition-colors duration-300 ${cat.className}`}
+              className={`group relative p-8 rounded-2xl border border-border/50 bg-card transition-colors duration-300 ${cat.className}`}
             >
               <div className="flex items-start justify-between mb-6">
                 <div>

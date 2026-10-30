@@ -16,7 +16,7 @@ import allPageData from "@/data/pageContent.json";
 import { cn } from "@/lib/cn";
 
 function surfaceCard() {
-  return "rounded-[24px] border border-border bg-card";
+  return "rounded-2xl border border-border/50 bg-card";
 }
 
 function surfaceCardHover() {
@@ -202,7 +202,7 @@ export function InteractivePage({ initialLang = "en" }: { initialLang?: "en" | "
                   href={project.href}
                   className={cn(surfaceCard(), "p-6", surfaceCardHover(), focusRing())}
                 >
-                  <div className="relative aspect-[16/10] w-full overflow-hidden rounded-[20px] bg-gray-800">
+                  <div className="relative aspect-[16/10] w-full overflow-hidden rounded-xl bg-gray-800">
                     {project.image ? (
                       <Image
                         src={project.image}
@@ -276,7 +276,7 @@ export function InteractivePage({ initialLang = "en" }: { initialLang?: "en" | "
                   target="_blank"
                   className={cn(surfaceCard(), "p-6 shrink-0 w-[85vw] sm:w-[400px] flex flex-col snap-start", surfaceCardHover(), focusRing())}
                 >
-                  <div className="relative aspect-[16/9] w-full overflow-hidden rounded-[20px] bg-gray-800">
+                  <div className="relative aspect-[16/9] w-full overflow-hidden rounded-xl bg-gray-800">
                     {x.image ? (
                       <Image
                         src={x.image}
