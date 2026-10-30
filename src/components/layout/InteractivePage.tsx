@@ -36,12 +36,16 @@ export function InteractivePage({ initialLang = "en" }: { initialLang?: "en" | "
   }, [initialLang]);
 
   useEffect(() => {
+    const controller = new AbortController();
     async function fetchMedium() {
       try {
-        const res = await fetch(`https://api.rss2json.com/v1/api.json?rss_url=https://medium.com/feed/@yohanesrizky&t=${Date.now()}`);
+        const res = await fetch(
+          `https://api.rss2json.com/v1/api.json?rss_url=https://medium.com/feed/@yohanesrizky&t=${Date.now()}`,
+          { signal: controller.signal }
+        );
         if (res.ok) {
           const data = await res.json();
-          if (data.status === "ok" && data.items) {
+          if (data?.status === "ok" && Array.isArray(data.items)) {
             const relevantKeywords = ["android", "development", "developer", "kotlin", "jetpack", "architecture", "mobile", "vibecoding", "coding", "senior", "vibe coding"];
             const filtered = data.items.filter((item: any) => {
               if (!item.categories || item.categories.length === 0) return true;
@@ -50,23 +54,24 @@ export function InteractivePage({ initialLang = "en" }: { initialLang?: "en" | "
 
             const finalItems = filtered.length > 0 ? filtered : data.items;
             const mapped = finalItems.map((item: any) => {
-              const imgMatch = item.content.match(/<img[^>]+src="([^">]+)"/);
+              const imgMatch = item.content?.match(/<img[^>]+src="([^">]+)"/);
               const fallbackImg = "https://images.pexels.com/photos/943096/pexels-photo-943096.jpeg";
               return {
                 title: item.title,
-                body: item.description.replace(/<[^>]+>/g, '').replace(/&amp;/g, '&').substring(0, 120) + '...',
-                href: item.link.split('?')[0],
+                body: item.description ? item.description.replace(/<[^>]+>/g, '').replace(/&amp;/g, '&').substring(0, 120) + '...' : '',
+                href: item.link ? item.link.split('?')[0] : 'https://medium.com/@yohanesrizky',
                 image: item.thumbnail || (imgMatch ? imgMatch[1] : fallbackImg)
               };
             });
             setMediumArticles(mapped);
           }
         }
-      } catch (err) {
-        console.error("Medium fetch error", err);
+      } catch {
+        // Silently fall back to static articles in pageContent.json without tripping Next.js dev error overlay
       }
     }
     fetchMedium();
+    return () => controller.abort();
   }, []);
 
   const activeArticles = (mediumArticles || pageData.studio.items).slice(0, 3);
